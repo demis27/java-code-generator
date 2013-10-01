@@ -1,0 +1,27 @@
+{
+   "databaseConfiguration":{
+      "url":"jdbc:postgresql://localhost:5432/Family",
+      "user":"family",
+      "password":"family",
+      "schema":"family",
+      "readData":false,
+      "filter":null,
+      "h2scripts":null,
+      "ddl":null
+   },
+   "objectConfiguration":{
+      "packageName":"org.demis.family"
+   },
+   "projectPath":".",
+   "filesConfiguration":[
+      {
+         "fileNameTemplate":"{packageName}/{className}.java",
+         "templateName":"templates/entity/entity.st",
+         "path":"src/main/generated-java",
+         "target":"table",
+         "name":"entity",
+         "filters":null,
+         "collision":null
+      }
+   ]
+}
