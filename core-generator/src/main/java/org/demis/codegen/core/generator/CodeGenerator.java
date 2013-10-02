@@ -8,10 +8,8 @@ import org.demis.codegen.core.db.reader.PostgresSchemaReader;
 import org.demis.codegen.core.generator.configuration.*;
 import org.demis.codegen.core.generator.configuration.CodeGeneratorConfiguration;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,7 +58,9 @@ public class CodeGenerator {
         context.put("configuration", configuration);
 
         for (TemplateConfiguration templateConfiguration : configuration.getFilesConfiguration()) {
-            InputStream stream = getClass().getResourceAsStream(templateConfiguration.getTemplateName());
+            logger.debug("project path " + configuration.getProjectPath() + " templates path " + configuration.getTemplatesPath());
+            logger.debug("template file name " + configuration.getProjectPath() + configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
+            InputStream stream = new FileInputStream(configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
             ST template = new ST(IOUtils.toString(IOUtils.toByteArray(stream), "UTF-8"));
 
             context.put("templateConfiguration", templateConfiguration);

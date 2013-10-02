@@ -12,7 +12,7 @@
    "objectConfiguration":{
       "packageName":"org.demis.family"
    },
-   "projectPath":"",
+   "projectPath":"maven-plugin",
    "templatesPath": "/src/main/configuration/",
    "filesConfiguration":[
       {

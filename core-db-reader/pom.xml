@@ -13,6 +13,10 @@
     <artifactId>core-db-reader</artifactId>
     <packaging>jar</packaging>
 
+    <name>Core DB - DB Reader</name>
+    <description>Core DB reader package</description>
+    <url>http://maven.apache.org</url>
+
     <dependencies>
         <dependency>
             <groupId>org.demis.codegen</groupId>

@@ -21,6 +21,7 @@
         <module>core-mapping</module>
         <module>core-generator</module>
         <module>maven-plugin</module>
+        <!-- module>family</module -->
     </modules>
     <dependencies>
         <dependency>

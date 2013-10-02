@@ -28,7 +28,8 @@ public class CodeGeneratorTest {
     public void setUp() throws Exception {
         configuration = new CodeGeneratorConfiguration();
         configuration.setDefaultPackageName("org.demis");
-        configuration.setProjectPath(".");
+        configuration.setProjectPath((new File("")).getAbsolutePath());
+        configuration.setTemplatesPath(configuration.getProjectPath() + "/src/test/resources/");
         // Database
         DatabaseConfiguration databaseConfiguration = new DatabaseConfiguration();
         databaseConfiguration.setUrl("jdbc:postgresql://localhost:5432/test");
@@ -82,7 +83,7 @@ public class CodeGeneratorTest {
         entity.setName("Family");
 
         String filename = generator.getFileName(configuration, configuration.getFilesConfiguration().get(0), entity);
-        Assert.assertEquals(filename, "./src/test/generated-java/org/demis/family/FamilyTest.java");
+        Assert.assertEquals(filename, (new File("")).getAbsolutePath() + "/src/test/generated-java/org/demis/family/FamilyTest.java");
     }
 
     @Test
