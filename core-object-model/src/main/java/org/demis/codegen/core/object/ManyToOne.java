@@ -46,4 +46,20 @@ public class ManyToOne {
     public Property getTargetProperty(Property property) {
         return associatedProperties.get(property);
     }
+
+    public boolean isSimple() {
+        if (associatedProperties != null)
+            return associatedProperties.size() > 0;
+        else
+            return false;
+    }
+
+    public Property getSimpleSource() {
+        if (isSimple()) {
+            return associatedProperties.keySet().iterator().next();
+        }
+        else {
+            return null;
+        }
+    }
 }

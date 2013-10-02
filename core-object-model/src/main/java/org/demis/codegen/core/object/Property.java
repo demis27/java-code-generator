@@ -15,6 +15,8 @@ public class Property {
 
     protected boolean isId = false;
 
+    protected boolean isManyToOne = false;
+
     public Property() {
         // no op
     }
@@ -61,6 +63,14 @@ public class Property {
 
     public String getNameAsSuffix() {
         return NameUtil.toUpperCaseFirst(name);
+    }
+
+    public boolean isManyToOne() {
+        return isManyToOne;
+    }
+
+    public void setManyToOne(boolean manyToOne) {
+        isManyToOne = manyToOne;
     }
 
     @Override

@@ -2,9 +2,7 @@ package org.demis.codegen.core.mapping;
 
 import orde.demis.codegen.util.NameUtil;
 import org.demis.codegen.core.db.*;
-import org.demis.codegen.core.object.Entity;
-import org.demis.codegen.core.object.Id;
-import org.demis.codegen.core.object.Property;
+import org.demis.codegen.core.object.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,10 +39,10 @@ public class DataBaseToObjectConverter {
 
         for (Table table: schema.getTables()) {
             for (ForeignKey foreignKey: table.getExportedKeys()) {
-//                convertFromReference(foreignKey);
+                convertFromReference(foreignKey);
             }
             for (ForeignKey foreignKey: table.getImportedKeys()) {
-//                convertToReference(foreignKey);
+                convertToReference(foreignKey);
             }
         }
 
@@ -117,6 +115,58 @@ public class DataBaseToObjectConverter {
         classDescriptor.setId(id);
 
         return id;
+    }
+
+    public OneToMany convertFromReference(ForeignKey reference) {
+        OneToMany oneToMany = new OneToMany();
+        oneToMany.setOwner(Mapping.getInstance().getEntity(reference.getImportedTable()));
+        oneToMany.setAssociatedEntity(Mapping.getInstance().getEntity(reference.getExportedTable()));
+
+        // from properties
+        for (Column fromColumn : reference.getImportedColumns()) {
+            Column toColumn = reference.getExportedColumn(fromColumn);
+
+            Property leftProperty = Mapping.getInstance().getProperty(fromColumn);
+            Property rightProperty = Mapping.getInstance().getProperty(toColumn);
+            oneToMany.addAssociatedProperties(leftProperty, rightProperty);
+        }
+        // name
+        if (reference.getExportedTable() != null) {
+            //oneToMany.setName(toLowerCaseFirst(convertDataBaseName(reference.getName())));
+        }
+
+        Entity entity = Mapping.getInstance().getEntity(reference.getImportedTable());
+        entity.addOneToManyRelation(oneToMany);
+
+        logger.info("'from' reference #" + reference + " converted to relation #" + oneToMany);
+        return oneToMany;
+    }
+
+    public ManyToOne convertToReference(ForeignKey reference) {
+        ManyToOne manyToOne = new ManyToOne();
+        manyToOne.setOwner(Mapping.getInstance().getEntity(reference.getImportedTable()));
+        manyToOne.setAssociatedEntity(Mapping.getInstance().getEntity(reference.getExportedTable()));
+
+        // from properties
+        for (Column fromColumn : reference.getImportedColumns()) {
+            Column toColumn = reference.getExportedColumn(fromColumn);
+
+            Property leftProperty = Mapping.getInstance().getProperty(fromColumn);
+            leftProperty.setManyToOne(true);
+            Property rightProperty = Mapping.getInstance().getProperty(toColumn);
+            manyToOne.addAssociatedProperties(leftProperty, rightProperty);
+        }
+        // name
+        if (reference.getImportedColumns().size() == 1) {
+            Column fromColumn = reference.getImportedColumns().iterator().next();
+            //manyToOne.setName(toLowerCaseFirst(convertDataBaseName(fromColumn.getName())));
+        }
+
+        Entity entity = Mapping.getInstance().getEntity(reference.getExportedTable());
+        entity.addManyToOneRelation(manyToOne);
+
+        logger.info("'to' reference #" + reference + " converted to relation #" + manyToOne);
+        return manyToOne;
     }
 
     public static String convertDataBaseName(String name) {

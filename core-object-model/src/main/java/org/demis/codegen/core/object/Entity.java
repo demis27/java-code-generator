@@ -11,6 +11,10 @@ public class Entity {
 
     private Id id = null;
 
+    private List<OneToMany> oneToManyRelations = new ArrayList<>();
+
+    private List<ManyToOne> manyToOneRelations = new ArrayList<>();
+
     public Entity() {
         // no op
     }
@@ -50,6 +54,48 @@ public class Entity {
 
     public void setId(Id id) {
         this.id = id;
+    }
+
+    public List<OneToMany> getOneToManyRelations() {
+        return oneToManyRelations;
+    }
+
+    public boolean haveOneToManyRelations() {
+        if (oneToManyRelations != null) {
+            return oneToManyRelations.size() > 0;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void setOneToManyRelations(List<OneToMany> oneToManyRelations) {
+        this.oneToManyRelations = oneToManyRelations;
+    }
+
+    public void addOneToManyRelation(OneToMany oneToManyRelation) {
+        this.oneToManyRelations.add(oneToManyRelation);
+    }
+
+    public List<ManyToOne> getManyToOneRelations() {
+        return manyToOneRelations;
+    }
+
+    public boolean haveManyToOneRelations() {
+        if (manyToOneRelations != null) {
+            return manyToOneRelations.size() > 0;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void setManyToOneRelations(List<ManyToOne> manyToOneRelations) {
+        this.manyToOneRelations = manyToOneRelations;
+    }
+
+    public void addManyToOneRelation(ManyToOne manyToOneRelations) {
+        this.manyToOneRelations.add(manyToOneRelations);
     }
 
     @Override
