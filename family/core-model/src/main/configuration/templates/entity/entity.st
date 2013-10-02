@@ -30,10 +30,17 @@ $entity.id.properties:{property|
 $endif$
     // raw properties
 $entity.properties:{property|
-$if(!property.id)$
+$if(!property.id && !property.manyToOne)$
     private $property.javaType$ $property.name$ = null;
 $endif$
 }$
+    // Many to one
+$entity.manyToOneRelations:{manyToOne|
+$if(manyToOne.simple)$
+    private $manyToOne.associatedEntity.name$ $manyToOne.simpleSource.name$ = null;
+$endif$
+}$
+
 
     // Constructor
     public $entity.name$() {
@@ -65,7 +72,7 @@ $endif$
 
     // raw attribute methods
 $entity.properties:{property|
-$if(!property.id)$
+$if(!property.id && !property.manyToOne)$
     @Column(name = "$property.name$", nullable = $property.column.nullable$, unique = $property.column.unique$, length = $property.column.size$)
     public $property.javaType$ get$property.nameAsSuffix$() {
         return $property.name$;
