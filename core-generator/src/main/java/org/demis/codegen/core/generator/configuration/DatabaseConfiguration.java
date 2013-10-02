@@ -85,4 +85,17 @@ public class DatabaseConfiguration {
         this.ddl = ddl;
     }
 
+    @Override
+    public String toString() {
+        return "DatabaseConfiguration{" +
+                "url='" + url + '\'' +
+                ", user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                ", schema='" + schema + '\'' +
+                ", readData=" + readData +
+                ", filter='" + filter + '\'' +
+                ", h2scripts='" + h2scripts + '\'' +
+                ", ddl='" + ddl + '\'' +
+                '}';
+    }
 }

@@ -1,6 +1,5 @@
 package org.demis.codegen.maven.plugin;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -12,11 +11,9 @@ import org.demis.codegen.core.generator.configuration.CodeGeneratorConfiguration
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.demis.codegen.core.generator.CodeGenerator;
-import org.stringtemplate.v4.ST;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 @Mojo( name = "generate-files")
 public class CodeGenPlugin extends AbstractMojo {
@@ -41,31 +38,28 @@ public class CodeGenPlugin extends AbstractMojo {
      */
     @Override
     public void execute() throws MojoExecutionException {
-
+        logger.debug("CodeGenPlugin parameters: outputDirectory = " + outputDirectory + ", configurationFileName = " + configurationFileName);
         if (outputDirectory == null) {
             outputDirectory = new File("");
         }
-
-        logger.info("outputDirectory : " + outputDirectory.getAbsolutePath());
-        logger.info("configurationFileName : " + configurationFileName);
-
-
+        logger.debug("CodeGenPlugin parameters processed: outputDirectory = " + outputDirectory.getAbsolutePath() + ", configurationFileName = " + configurationFileName);
+        // Procedd complete path and read and update configuration
         String completePath = outputDirectory.getAbsolutePath() + File.separator + configurationFileName;
         CodeGeneratorConfiguration configuration = ConfigurationReader.readJSONFile(completePath);
+        if (configuration == null) {
+            throw new MojoExecutionException("Configuration file " + completePath + " not found ");
+        }
         configuration.setProjectPath(outputDirectory.getAbsolutePath());
-
-        File file = new File(completePath);
-
-        configuration.setTemplatesPath(file.getParent());
-        logger.info("templatePath : " + file.getParent());
-
+        configuration.setTemplatesPath((new File(completePath)).getParent());
+        logger.debug("Configuration template path processed =" + configuration.getTemplatesPath());
+        // Create the code generator
         CodeGenerator codeGenerator = new CodeGenerator(configuration);
         try {
             codeGenerator.generate();
         } catch (DatabaseReadingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            throw new MojoExecutionException("Can't read the database", e);
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            throw new MojoExecutionException("Error", e);
         }
     }
 

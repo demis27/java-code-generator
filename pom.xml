@@ -15,6 +15,7 @@
     <url>http://maven.apache.org</url>
 
     <modules>
+        <module>core-util</module>
         <module>core-db-model</module>
         <module>core-db-reader</module>
         <module>core-object-model</module>
@@ -93,6 +94,29 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
                     <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/generated-sql</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>src/main/generated-java</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>src/main/generated-resources</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>src/test/generated-java</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>src/test/generated-resources</directory>
+                        </fileset>
+                    </filesets>
                 </configuration>
             </plugin>
         </plugins>

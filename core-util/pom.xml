@@ -10,20 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.demis.codegen</groupId>
-    <artifactId>core-object-model</artifactId>
+    <artifactId>core-util</artifactId>
     <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.demis.codegen</groupId>
-            <artifactId>core-util</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.demis.codegen</groupId>
-            <artifactId>core-db-model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 </project>

@@ -45,7 +45,7 @@ public class GenericSchemaReader {
     }
 
     public Schema read(DatabaseConfiguration configuration) throws DatabaseReadingException {
-
+        logger.info("Read database from configuration = " + configuration);
         Schema schema = readSchema(configuration);
         if (schema != null) {
             readTables(configuration, schema);
@@ -57,6 +57,7 @@ public class GenericSchemaReader {
     }
 
     public Schema readSchema(DatabaseConfiguration configuration) throws DatabaseReadingException {
+        logger.info("Read schema = " + configuration.getSchemaName());
         Schema schema = null;
         ResultSet resultSet = null;
         Connection connection = null;
@@ -79,6 +80,7 @@ public class GenericSchemaReader {
     }
 
     public void readTables(DatabaseConfiguration configuration, Schema schema) {
+        logger.info("Read tables from schema = " + schema);
         Map<String, Table> tables = new HashMap<>();
         Connection connection = null;
         ResultSet resultSet = null;
@@ -86,7 +88,6 @@ public class GenericSchemaReader {
             connection = getConnection(configuration);
             DatabaseMetaData metaData = connection.getMetaData();
             // read tables
-            logger.info("read tables for schema #" + schema);
             resultSet = metaData.getTables(
                     null,
                     schema.getName(),
@@ -96,7 +97,6 @@ public class GenericSchemaReader {
                 Table table = new Table(resultSet.getString("TABLE_NAME"));
                 table.setRemarks(resultSet.getString("REMARKS"));
                 tables.put(table.getName(), table);
-                logger.info("read table #" + table);
             }
         } catch (SQLException ex) {
             logger.error("Error when reading schema's table " + configuration.getSchemaName(), ex);
@@ -114,7 +114,7 @@ public class GenericSchemaReader {
             connection = getConnection(configuration);
             DatabaseMetaData metaData = connection.getMetaData();
             for (Table table : schema.getTables()) {
-                logger.info("read columns for table #" + table + " on schema #" + schema);
+                logger.info("Read columns for table = " + table + " on schema = " + schema);
                 // columns
                 resultSet = metaData.getColumns(
                         null,
@@ -139,7 +139,7 @@ public class GenericSchemaReader {
                     column.setPosition(position);
 
                     table.addColumn(column);
-                    logger.info("read column #" + column);
+                    logger.info("Read column = " + column);
                 }
                 resultSet.close();
             }

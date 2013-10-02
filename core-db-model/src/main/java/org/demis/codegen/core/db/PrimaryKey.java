@@ -67,7 +67,7 @@ public class PrimaryKey extends ColumnReferencesHolder {
     public String toString() {
         return "PrimaryKey{" +
                 "name='" + name + '\'' +
-                ", table=" + table +
+                ", table=" + (table != null ? table.getName() : "null") +
                 ", remarks='" + remarks + '\'' +
                 '}';
     }

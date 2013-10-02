@@ -135,7 +135,10 @@ public class Table {
     public String toString() {
         return "Table{" +
                 "name='" + name + '\'' +
-                ", schema=" + schema +
+                ", remarks='" + remarks + '\'' +
+                ", schema=" + ( schema != null ? schema.getName() : "null") +
+                ", columns=" + columns +
+                ", primaryKey=" + primaryKey +
                 '}';
     }
 }

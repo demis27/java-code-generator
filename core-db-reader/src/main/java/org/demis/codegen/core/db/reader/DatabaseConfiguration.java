@@ -46,4 +46,13 @@ public class DatabaseConfiguration {
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "DatabaseConfiguration{" +
+                "url='" + url + '\'' +
+                ", user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                ", schemaName='" + schemaName + '\'' +
+                '}';
+    }
 }

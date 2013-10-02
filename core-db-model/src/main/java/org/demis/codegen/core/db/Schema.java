@@ -67,6 +67,7 @@ public class Schema {
     public String toString() {
         return "Schema{" +
                 "name='" + name + '\'' +
+                ", tables=" + tables +
                 '}';
     }
 }

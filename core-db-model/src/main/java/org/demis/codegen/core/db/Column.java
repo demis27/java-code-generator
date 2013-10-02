@@ -185,7 +185,7 @@ public class Column {
                 ", scale=" + scale +
                 ", type=" + type +
                 ", foreignKey=" + foreignKey +
-                ", table=" + table +
+                ", table=" + (table != null ? table.getName() : "null") +
                 ", noref=" + noref +
                 ", remarks='" + remarks + '\'' +
                 ", defaultValue='" + defaultValue + '\'' +

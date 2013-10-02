@@ -16,11 +16,20 @@
    "templatesPath": "/src/main/configuration/",
    "filesConfiguration":[
       {
-         "fileNameTemplate":"{packageName}/{className}.java",
+         "name":"entity",
+         "fileNameTemplate":"{packageName}/domain/{className}.java",
          "templateName":"/templates/entity/entity.st",
          "path":"src/main/generated-java",
          "target":"table",
-         "name":"entity",
+         "filters":null,
+         "collision":null
+      },
+      {
+         "name":"identifiable",
+         "fileNameTemplate":"{packageName}/domain/Identifiable.java",
+         "templateName":"/templates/entity/identifiable.st",
+         "path":"src/main/generated-java",
+         "target":"schema",
          "filters":null,
          "collision":null
       }

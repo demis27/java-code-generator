@@ -1,15 +1,20 @@
 package org.demis.codegen.core.mapping;
 
+import orde.demis.codegen.util.NameUtil;
 import org.demis.codegen.core.db.*;
 import org.demis.codegen.core.object.Entity;
 import org.demis.codegen.core.object.Id;
 import org.demis.codegen.core.object.Property;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 public class DataBaseToObjectConverter {
+
+    private final Logger logger = LoggerFactory.getLogger(DataBaseToObjectConverter.class);
 
     private static DataBaseToObjectConverter ourInstance = new DataBaseToObjectConverter();
 
@@ -21,14 +26,15 @@ public class DataBaseToObjectConverter {
     }
 
     public List<Entity> convertSchema(Schema schema) {
-        List<Entity> classes = new ArrayList<Entity>();
+        logger.info("Convert schema = " + schema);
+        List<Entity> entities = new ArrayList<>();
 
         for (Table table: schema.getTables()) {
-            Entity classDescriptor = convertTable(table);
-            classes.add(classDescriptor);
-            convertColumns(table);
+            Entity entity = convertTable(table);
+            entities.add(entity);
+            entity.setProperties(convertColumns(table));
             if (table.getPrimaryKey() != null) {
-                convertPrimaryKey(table.getPrimaryKey());
+                entity.setId(convertPrimaryKey(table.getPrimaryKey()));
             }
 
         }
@@ -42,21 +48,23 @@ public class DataBaseToObjectConverter {
             }
         }
 
-        return classes;
+        return entities;
     }
 
     public Entity convertTable(Table table) {
+        logger.info("Convert table = " + table);
         Entity entity = new Entity();
 
         entity.setName(convertDataBaseName(table.getName()));
         Mapping.getInstance().addMapping(table, entity);
 
+        logger.info("Conver table to entity = " + entity);
        return entity;
     }
 
 
     public List<Property> convertColumns(Table table) {
-        List<Property> properties = new ArrayList<Property>();
+        List<Property> properties = new ArrayList<>();
         for (Column column : table.getColumns()) {
             Property property = convertColumn(column);
             properties.add(property);
@@ -67,6 +75,7 @@ public class DataBaseToObjectConverter {
         return properties;
     }
     public Property convertColumn(Column column) {
+        logger.info("Convert column = " + column);
         Property property = new Property();
         // Process property name
         String propertyName = convertDataBaseName(column.getName(), !column.isPrimaryKey());
@@ -74,8 +83,10 @@ public class DataBaseToObjectConverter {
         property.setName(propertyName);
         // Process java type
         property.setJavaType(SQLTypeToClassConverter.getInstance().convert(column.getType()));
+        property.setColumn(column);
         Mapping.getInstance().addMapping(column, property);
 
+        logger.info("Converted column = " + column + " to property : " + property);
         return property;
     }
 
@@ -93,10 +104,11 @@ public class DataBaseToObjectConverter {
             className = Mapping.getInstance().getProperty(primaryKey.getColumnAs(1)).getJavaType();
         }
 
-        name = toLowerCaseFirst(name);
+        name = NameUtil.toLowerCaseFirst(name);
 
         for (Column column : primaryKey.getColumns()) {
             column.setForeignKey(true);
+            Mapping.getInstance().getProperty(column).setId(true);
             id.addProperty(Mapping.getInstance().getProperty(column));
         }
         id.setName(name);
@@ -125,17 +137,4 @@ public class DataBaseToObjectConverter {
         return buffer.toString();
     }
 
-    public static String toUpperCaseFirst(String value) {
-        if (value == null || value.length() == 0) {
-            return value;
-        }
-        return value.substring(0, 1).toUpperCase() +  value.substring(1, value.length());
-    }
-
-    public static String toLowerCaseFirst(String value) {
-        if (value == null || value.length() == 0) {
-            return value;
-        }
-        return value.substring(0, 1).toLowerCase() +  value.substring(1, value.length());
-    }
 }

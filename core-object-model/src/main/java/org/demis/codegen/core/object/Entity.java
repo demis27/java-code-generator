@@ -27,6 +27,15 @@ public class Entity {
         return properties;
     }
 
+    public boolean haveProperties() {
+        if (properties != null) {
+            return properties.size() > 0;
+        }
+        else {
+            return false;
+        }
+    }
+
     public void setProperties(List<Property> properties) {
         this.properties = properties;
     }
@@ -41,5 +50,31 @@ public class Entity {
 
     public void setId(Id id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Entity entity = (Entity) o;
+
+        if (name != null ? !name.equals(entity.name) : entity.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Entity{" +
+                "name='" + name + '\'' +
+                ", properties=" + properties +
+                ", id=" + id +
+                '}';
     }
 }

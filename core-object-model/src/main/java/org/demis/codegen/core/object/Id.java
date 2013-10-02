@@ -27,6 +27,13 @@ public class Id {
         return properties;
     }
 
+    public boolean isSimple() {
+        if (properties != null)
+            return properties.size() > 0;
+        else
+            return false;
+    }
+
     public void setProperties(List<Property> properties) {
         this.properties = properties;
     }
@@ -41,5 +48,14 @@ public class Id {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Id{" +
+                "properties=" + properties +
+                ", owner=" + (owner != null ? owner.getName() : "null") +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

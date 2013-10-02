@@ -9,7 +9,6 @@ import org.demis.codegen.core.generator.configuration.*;
 import org.demis.codegen.core.generator.configuration.CodeGeneratorConfiguration;
 
 import java.io.*;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +22,6 @@ import org.demis.codegen.core.object.Property;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.stringtemplate.v4.ST;
-import org.stringtemplate.v4.STGroup;
-import org.stringtemplate.v4.STGroupDir;
 
 /**
  * @version 1.0
@@ -58,26 +55,30 @@ public class CodeGenerator {
         context.put("configuration", configuration);
 
         for (TemplateConfiguration templateConfiguration : configuration.getFilesConfiguration()) {
-            logger.debug("project path " + configuration.getProjectPath() + " templates path " + configuration.getTemplatesPath());
-            logger.debug("template file name " + configuration.getProjectPath() + configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
-            InputStream stream = new FileInputStream(configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
-            ST template = new ST(IOUtils.toString(IOUtils.toByteArray(stream), "UTF-8"));
 
             context.put("templateConfiguration", templateConfiguration);
             if (templateConfiguration.getTarget().equals("column")) {
                 for (Entity entity : entities) {
                     for (Property property: entity.getProperties()) {
                         context.put("propertyDescriptor", property);
+                        InputStream stream = new FileInputStream(configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
+                        ST template = new ST(IOUtils.toString(IOUtils.toByteArray(stream), "UTF-8"), '$', '$');
+                        generateFile(template, context);
                     }
                 }
             } else if (templateConfiguration.getTarget().equals("table")) {
                 for (Entity entity : entities) {
                     context.put("entity", entity);
+                    InputStream stream = new FileInputStream(configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
+                    ST template = new ST(IOUtils.toString(IOUtils.toByteArray(stream), "UTF-8"), '$', '$');
+                    generateFile(template, context);
                 }
             } else if (templateConfiguration.getTarget().equals("schema")) {
                 context.put("schema", schema);
+                InputStream stream = new FileInputStream(configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
+                ST template = new ST(IOUtils.toString(IOUtils.toByteArray(stream), "UTF-8"), '$', '$');
+                generateFile(template, context);
             }
-            generateFile(template, context);
         }
     }
 
@@ -104,6 +105,7 @@ public class CodeGenerator {
         try {
             FileUtils.forceMkdir(filePath);
             fileOutput = new FileOutputStream(filename);
+            logger.info("Generate file = " + filename);
             fileOutput.write(template.render().getBytes());
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -264,7 +266,7 @@ public class CodeGenerator {
         if (configuration.getDefaultPackageName() != null) {
             result = result.replaceAll("\\{defaultpackageName\\}", convertPackageNameToPath(configuration.getDefaultPackageName()));
         }
-        logger.info("parseFileName( " + templateFileName + " ) to " + result);
+        logger.debug("parseFileName( " + entity + "," + templateFileName + " ) to " + result );
         return result;
     }
 
