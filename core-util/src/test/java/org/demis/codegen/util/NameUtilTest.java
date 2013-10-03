@@ -1,4 +1,4 @@
-package orde.demis.codegen.util;
+package org.demis.codegen.util;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -40,5 +40,16 @@ public class NameUtilTest {
         input = "FamilyTree";
         output = NameUtil.toLowerCaseFirst(input);
         Assert.assertEquals("familyTree", output);
+    }
+
+    @Test
+    public void getPlural() {
+        String input = "Family";
+        String output = NameUtil.getPlural(input);
+        Assert.assertEquals(output, "Families");
+
+        input = "Test";
+        output = NameUtil.getPlural(input);
+        Assert.assertEquals(output, "Tests");
     }
 }

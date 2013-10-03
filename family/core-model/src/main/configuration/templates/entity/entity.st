@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +43,12 @@ $if(manyToOne.simple)$
 $endif$
 }$
 
+    // One to many
+$entity.oneToManyRelations:{oneToMany|
+$if(oneToMany.simple)$
+    private List<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.plural$ = new ArrayList<>();
+$endif$
+}$
 
     // Constructor
     public $entity.name$() {

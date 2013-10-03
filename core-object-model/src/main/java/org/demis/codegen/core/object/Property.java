@@ -1,7 +1,7 @@
 package org.demis.codegen.core.object;
 
-import orde.demis.codegen.util.NameUtil;
 import org.demis.codegen.core.db.Column;
+import org.demis.codegen.util.NameUtil;
 
 public class Property {
 
@@ -23,6 +23,10 @@ public class Property {
 
     public String getName() {
         return name;
+    }
+
+    public String getPlural() {
+        return NameUtil.getPlural(name);
     }
 
     public void setName(String name) {

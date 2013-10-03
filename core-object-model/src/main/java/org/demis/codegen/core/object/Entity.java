@@ -1,5 +1,7 @@
 package org.demis.codegen.core.object;
 
+import org.demis.codegen.util.NameUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,10 @@ public class Entity {
 
     public String getName() {
         return name;
+    }
+
+    public String getPlural() {
+        return NameUtil.toLowerCaseFirst(NameUtil.getPlural(name));
     }
 
     public void setName(String name) {

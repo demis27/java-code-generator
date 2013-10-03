@@ -1,4 +1,4 @@
-package orde.demis.codegen.util;
+package org.demis.codegen.util;
 
 public class NameUtil {
 
@@ -14,5 +14,17 @@ public class NameUtil {
             return value;
         }
         return value.substring(0, 1).toLowerCase() +  value.substring(1, value.length());
+    }
+
+    public static String getPlural(String value) {
+        if (value != null) {
+            if (value.charAt(value.length() - 1) == 'y') {
+                return value.substring(0, value.length() -1) + "ies";
+            }
+            return value + "s";
+        }
+        else {
+            return null;
+        }
     }
 }

@@ -70,3 +70,42 @@ COMMENT ON TABLE "Test"."ComplexPrimaryTable"
 COMMENT ON COLUMN "Test"."ComplexPrimaryTable"."PrimaryKeyPartOne" IS 'First part of the primary key';
 COMMENT ON COLUMN "Test"."ComplexPrimaryTable"."PrimaryKeyPartTwo" IS 'Second part of the primary key';
 COMMENT ON COLUMN "Test"."ComplexPrimaryTable"."SimpleColumn" IS 'Simple boolean column';
+
+
+--------------------------------------------------------------------------------
+-- Table: "Test"."ForeignKeyTable"
+
+-- DROP TABLE "Test"."ForeignKeyTable";
+
+CREATE TABLE "Test"."ForeignKeyTable"
+(
+  "ForeignKeyPrimaryKey" integer NOT NULL, -- The primary key of the table
+  "SimplePrimaryKey" integer, -- a foreign key on primary key table
+  CONSTRAINT "ForeingKeyPrimaryKey" PRIMARY KEY ("ForeignKeyPrimaryKey" ), -- The primary key of the table
+  CONSTRAINT "SimpleForeignKey" FOREIGN KEY ("SimplePrimaryKey")
+      REFERENCES "Test"."PrimaryTable" ("SimplePrimaryKey") MATCH Unknown
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "Test"."ForeignKeyTable"
+  OWNER TO test;
+COMMENT ON TABLE "Test"."ForeignKeyTable"
+  IS 'a table with a foreign key on PrimaryKeyTable';
+COMMENT ON COLUMN "Test"."ForeignKeyTable"."ForeignKeyPrimaryKey" IS 'The primary key of the table';
+COMMENT ON COLUMN "Test"."ForeignKeyTable"."SimplePrimaryKey" IS 'a foreign key on primary key table';
+
+COMMENT ON CONSTRAINT "ForeingKeyPrimaryKey" ON "Test"."ForeignKeyTable" IS 'The primary key of the table';
+
+
+-- Index: "Test"."fki_SimpleForeignKey"
+
+-- DROP INDEX "Test"."fki_SimpleForeignKey";
+
+CREATE INDEX "fki_SimpleForeignKey"
+  ON "Test"."ForeignKeyTable"
+  USING btree
+  ("SimplePrimaryKey" );
+
+;
