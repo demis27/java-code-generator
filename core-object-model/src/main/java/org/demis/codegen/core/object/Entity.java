@@ -25,8 +25,20 @@ public class Entity {
         return name;
     }
 
-    public String getPlural() {
+    public String getNameLowerFirst() {
+        return NameUtil.toLowerCaseFirst(name);
+    }
+
+    public String getNameUpperFirst() {
+        return NameUtil.toUpperCaseFirst(name);
+    }
+
+    public String getPluralLowerFirst() {
         return NameUtil.toLowerCaseFirst(NameUtil.getPlural(name));
+    }
+
+    public String getPluralUpperFirst() {
+        return NameUtil.toUpperCaseFirst(NameUtil.getPlural(name));
     }
 
     public void setName(String name) {

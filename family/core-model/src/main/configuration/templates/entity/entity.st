@@ -1,10 +1,20 @@
 package $defaultPackageName$.domain ;
 
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,38 +34,53 @@ $endif$
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger($entity.name$.class);
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Primary Key
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $if(entity.id.simple)$
 $entity.id.properties:{property|
     private $property.javaType$ $property.name$ = null;
 }$
 $endif$
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // raw properties
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.properties:{property|
 $if(!property.id && !property.manyToOne)$
     private $property.javaType$ $property.name$ = null;
 $endif$
 }$
+$if(entity.manyToOneRelations)$
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Many to one
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.manyToOneRelations:{manyToOne|
 $if(manyToOne.simple)$
     private $manyToOne.associatedEntity.name$ $manyToOne.simpleSource.name$ = null;
 $endif$
 }$
-
+$endif$
+$if(entity.oneToManyRelations)$
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // One to many
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.oneToManyRelations:{oneToMany|
 $if(oneToMany.simple)$
-    private List<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.plural$ = new ArrayList<>();
+    private List<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.pluralLowerFirst$ = new ArrayList<>();
 $endif$
 }$
+$endif$
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Constructor
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public $entity.name$() {
         // no op
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Primary Key methods
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $if(entity.id.simple)$
 $entity.id.properties:{property|
     @Override
@@ -78,7 +103,9 @@ $entity.id.properties:{property|
 }$
 $endif$
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // raw attribute methods
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.properties:{property|
 $if(!property.id && !property.manyToOne)$
     @Column(name = "$property.name$", nullable = $property.column.nullable$, unique = $property.column.unique$, length = $property.column.size$)
@@ -92,4 +119,62 @@ $if(!property.id && !property.manyToOne)$
 
 $endif$
 }$
+
+$if(entity.manyToOneRelations)$
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // many to one attributes methods
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$entity.manyToOneRelations:{manyToOne|
+$if(manyToOne.simple)$
+$if(manyToOne.simpleSource.column.notNull)$
+    @NotNull
+$endif$
+    @JoinColumn(name = "$manyToOne.simpleSource.column.name$", nullable = false)
+    @ManyToOne(cascade = { PERSIST, MERGE \}, fetch = LAZY)
+    public $manyToOne.associatedEntity.name$ get$manyToOne.associatedEntity.name$() {
+        return $manyToOne.simpleSource.name$;
+    \}
+
+    public void set$manyToOne.associatedEntity.name$($manyToOne.associatedEntity.name$ $manyToOne.simpleSource.name$) {
+        this.$manyToOne.simpleSource.name$ = $manyToOne.simpleSource.name$;
+    \}
+$endif$
+}$
+$endif$
+
+$if(entity.oneToManyRelations)$
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // one to many attributes methods
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$entity.oneToManyRelations:{oneToMany|
+$if(oneToMany.simple)$
+    @OneToMany(mappedBy = "$oneToMany.owner.name$", orphanRemoval = true, cascade = ALL)
+    public List<$oneToMany.associatedEntity.name$> get$oneToMany.associatedEntity.pluralUpperFirst$() {
+        return $oneToMany.associatedEntity.pluralLowerFirst$;
+    \}
+
+    public void set$oneToMany.associatedEntity.pluralUpperFirst$(List<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.pluralLowerFirst$) {
+        this.$oneToMany.associatedEntity.pluralLowerFirst$ = $oneToMany.associatedEntity.pluralLowerFirst$;
+    \}
+
+    public boolean add$oneToMany.associatedEntity.name$($oneToMany.associatedEntity.name$ $oneToMany.associatedEntity.nameLowerFirst$) {
+        if (get$oneToMany.associatedEntity.pluralUpperFirst$().add($oneToMany.associatedEntity.nameLowerFirst$)) {
+            $oneToMany.associatedEntity.nameLowerFirst$.set$oneToMany.owner.name$(this);
+            return true;
+        \}
+        return false;
+    \}
+
+    public boolean remove$oneToMany.associatedEntity.name$($oneToMany.associatedEntity.name$ $oneToMany.associatedEntity.nameLowerFirst$) {
+        if (get$oneToMany.associatedEntity.pluralUpperFirst$().remove($oneToMany.associatedEntity.nameLowerFirst$)) {
+            $oneToMany.associatedEntity.nameLowerFirst$.set$oneToMany.owner.name$(null);
+            return true;
+        \}
+        return false;
+    \}
+$endif$
+}$
+$endif$
 }
+
+

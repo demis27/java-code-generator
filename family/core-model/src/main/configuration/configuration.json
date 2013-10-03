@@ -25,6 +25,15 @@
          "collision":null
       },
       {
+         "name":"entityTest",
+         "fileNameTemplate":"{packageName}/domain/{className}Test.java",
+         "templateName":"/templates/entity/entityTest.st",
+         "path":"src/test/generated-java",
+         "target":"table",
+         "filters":null,
+         "collision":null
+      },
+      {
          "name":"identifiable",
          "fileNameTemplate":"{packageName}/domain/Identifiable.java",
          "templateName":"/templates/entity/identifiable.st",
