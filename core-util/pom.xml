@@ -12,6 +12,7 @@
     <groupId>org.demis.codegen</groupId>
     <artifactId>core-util</artifactId>
     <packaging>jar</packaging>
+    <name>Utils for code generator</name>
 
 
 </project>
