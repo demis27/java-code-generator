@@ -11,11 +11,12 @@
 
     <packaging>pom</packaging>
 
-    <name>Family Tree</name>
+    <name>Darempredoù</name>
     <url>http://maven.apache.org</url>
 
     <modules>
         <module>core-model</module>
+        <module>core-webapp</module>
     </modules>
     <dependencies>
         <dependency>
