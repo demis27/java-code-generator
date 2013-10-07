@@ -53,7 +53,7 @@ public class ColumnReference {
     @Override
     public String toString() {
         return "ColumnReference{" +
-                "column=" + column +
+                "column=" + (column != null ? column.getName() : "null")+
                 ", order=" + order +
                 '}';
     }

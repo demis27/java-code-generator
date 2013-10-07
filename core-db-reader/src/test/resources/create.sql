@@ -109,3 +109,61 @@ CREATE INDEX "fki_SimpleForeignKey"
   ("SimplePrimaryKey" );
 
 ;
+
+--------------------------------------------------------------------------------
+-- Table: "Test"."MultiFkA"
+
+-- DROP TABLE "Test"."MultiFkA";
+
+CREATE TABLE "Test"."MultiFkA"
+(
+  pk_a integer NOT NULL,
+  CONSTRAINT pk_a PRIMARY KEY (pk_a)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "Test"."MultiFkA"
+  OWNER TO test;
+
+-- Table: "Test"."MultiFkB"
+
+-- DROP TABLE "Test"."MultiFkB";
+
+CREATE TABLE "Test"."MultiFkB"
+(
+  pk_b integer NOT NULL,
+  fk_a1 integer,
+  fk_a2 integer,
+  CONSTRAINT pk_b PRIMARY KEY (pk_b),
+  CONSTRAINT fk_a1 FOREIGN KEY (fk_a1)
+      REFERENCES "Test"."MultiFkA" (pk_a) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT fk_a2 FOREIGN KEY (fk_a2)
+      REFERENCES "Test"."MultiFkA" (pk_a) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "Test"."MultiFkB"
+  OWNER TO test;
+
+-- Table: "Test"."MultiFkC"
+
+-- DROP TABLE "Test"."MultiFkC";
+
+CREATE TABLE "Test"."MultiFkC"
+(
+  pk_c integer NOT NULL,
+  fk_a1 integer,
+  CONSTRAINT pk_c PRIMARY KEY (pk_c),
+  CONSTRAINT fk_a1 FOREIGN KEY (fk_a1)
+      REFERENCES "Test"."MultiFkA" (pk_a) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "Test"."MultiFkC"
+  OWNER TO postgres;

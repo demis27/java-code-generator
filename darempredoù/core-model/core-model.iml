@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/generated-java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.demis.codegen:generator-maven-plugin:3.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.demis.codegen:core-generator:3.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.demis.codegen:core-object-model:3.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.demis.codegen:core-util:3.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
+    <orderEntry type="library" name="Maven: postgresql:postgresql:8.4-701.jdbc3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.5" level="project" />
+    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.1" level="project" />
+    <orderEntry type="library" name="Maven: oro:oro:2.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:0.9.30" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:0.9.30" level="project" />
+    <orderEntry type="library" name="Maven: org.demis.codegen:core-db-model:3.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.demis.codegen:core-db-reader:3.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.demis.codegen:core-mapping:3.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-json-org:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:stringtemplate:4.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr-runtime:3.3" level="project" />
+    <orderEntry type="library" name="Maven: com.h2database:h2:1.2.132" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-api:2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.27" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.yaml:snakeyaml:1.6" level="project" />
+  </component>
+</module>
+

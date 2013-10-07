@@ -114,4 +114,13 @@ public class ForeignKey {
         this.exportedTable = exportedTable;
     }
 
+    @Override
+    public String toString() {
+        return "ForeignKey{" +
+                "name='" + name + '\'' +
+                ", columnsMapping=" + columnsMapping +
+                ", importedTable=" + (importedTable != null ? importedTable.getName() : "null") +
+                ", exportedTable=" + (exportedTable != null ? exportedTable.getName() : "null") +
+                '}';
+    }
 }

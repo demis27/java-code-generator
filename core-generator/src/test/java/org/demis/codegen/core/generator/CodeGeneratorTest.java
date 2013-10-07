@@ -58,11 +58,11 @@ public class CodeGeneratorTest {
         Schema schema = generator.getSchema();
         Assert.assertNotNull(schema);
         Assert.assertNotNull(schema.getTables());
-        Assert.assertEquals(schema.getTables().size(), 5);
+        Assert.assertEquals(schema.getTables().size(), 8);
         // objects
         List<Entity> entities = generator.getEntities();
         Assert.assertNotNull(entities);
-        Assert.assertEquals(entities.size(), 5);
+        Assert.assertEquals(entities.size(), 8);
     }
 
     @Test

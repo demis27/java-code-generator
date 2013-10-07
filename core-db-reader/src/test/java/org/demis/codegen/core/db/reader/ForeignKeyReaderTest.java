@@ -31,13 +31,13 @@ public class ForeignKeyReaderTest {
         Assert.assertEquals(foreignKeyTable.getColumns().size(), 2);
 
         Assert.assertEquals(foreignKeyTable.getImportedKeys().size(), 1);
-        ForeignKey foreignKeyImported = foreignKeyTable.getImportedKey("SimpleForeignKey") ;
+        ForeignKey foreignKeyImported = foreignKeyTable.getImportedKey("ForeignKeyTable.SimpleForeignKey") ;
         Assert.assertNotNull(foreignKeyImported);
 
         Table primaryTable = schema.getTable("PrimaryTable");
         Assert.assertNotNull(primaryTable);
         Assert.assertEquals(primaryTable.getExportedKeys().size(), 1);
-        ForeignKey foreignKeyExported = primaryTable.getExportedKey("SimpleForeignKey") ;
+        ForeignKey foreignKeyExported = primaryTable.getExportedKey("ForeignKeyTable.SimpleForeignKey") ;
         Assert.assertNotNull(foreignKeyExported);
 
         Assert.assertEquals(foreignKeyImported.getImportedTable(), foreignKeyTable);
@@ -45,5 +45,21 @@ public class ForeignKeyReaderTest {
 
         Assert.assertEquals(foreignKeyExported.getImportedTable(), foreignKeyTable);
         Assert.assertEquals(foreignKeyExported.getExportedTable(), primaryTable);
+    }
+
+    @Test
+    public void readMultiForeignKeyTable() {
+        Table foreignKeyTableB = schema.getTable("MultiFkB");
+        Assert.assertNotNull(foreignKeyTableB);
+        Assert.assertEquals(foreignKeyTableB.getImportedKeys().size(), 2);
+
+        Table foreignKeyTableC = schema.getTable("MultiFkC");
+        Assert.assertNotNull(foreignKeyTableB);
+        Assert.assertEquals(foreignKeyTableC.getImportedKeys().size(), 1);
+
+        Table primaryKeyTableA = schema.getTable("MultiFkA");
+        Assert.assertNotNull(primaryKeyTableA);
+        Assert.assertEquals(primaryKeyTableA.getExportedKeys().size(), 3);
+
     }
 }

@@ -1,0 +1,46 @@
+{
+   "databaseConfiguration":{
+      "url":"jdbc:postgresql://localhost:5432/darempredoù",
+      "user":"darempredoù",
+      "password":"darempredoù",
+      "schema":"darempredoù",
+      "readData":false,
+      "filter":null,
+      "h2scripts":null,
+      "ddl":null
+   },
+   "objectConfiguration":{
+      "packageName":"org.demis.darempredou"
+   },
+   "projectPath":"",
+   "templatesPath": "/src/main/configuration/",
+   "filesConfiguration":[
+      {
+         "name":"entity",
+         "fileNameTemplate":"{packageName}/domain/{className}.java",
+         "templateName":"/templates/entity/entity.st",
+         "path":"src/main/generated-java",
+         "target":"table",
+         "filters":null,
+         "collision":null
+      },
+      {
+         "name":"entityTest",
+         "fileNameTemplate":"{packageName}/domain/{className}Test.java",
+         "templateName":"/templates/entity/entityTest.st",
+         "path":"src/test/generated-java",
+         "target":"table",
+         "filters":null,
+         "collision":null
+      },
+      {
+         "name":"identifiable",
+         "fileNameTemplate":"{packageName}/domain/Identifiable.java",
+         "templateName":"/templates/entity/identifiable.st",
+         "path":"src/main/generated-java",
+         "target":"schema",
+         "filters":null,
+         "collision":null
+      }
+   ]
+}

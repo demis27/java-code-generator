@@ -62,4 +62,13 @@ public class OneToMany {
             return null;
         }
     }
+
+    @Override
+    public String toString() {
+        return "OneToMany{" +
+                "associatedEntity=" + (associatedEntity != null ? associatedEntity.getName() : "null") +
+                ", owner=" + (owner != null ? owner.getName() : "null") +
+                ", associatedProperties=" + associatedProperties +
+                '}';
+    }
 }

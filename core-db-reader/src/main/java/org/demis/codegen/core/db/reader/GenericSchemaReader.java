@@ -203,8 +203,9 @@ public class GenericSchemaReader {
                     String importedColumnName = resultSet.getString("FKCOLUMN_NAME");
                     String exportedTableName = resultSet.getString("PKTABLE_NAME");
                     String exportedColumnName = resultSet.getString("PKCOLUMN_NAME");
-                    logger.info("reading foreign key #" + importedTableName + "" + importedColumnName
-                            + " -> " + exportedTableName + "." + exportedColumnName);
+                    String referenceName = importedTableName + "." + resultSet.getString("FK_NAME");
+                    logger.info("reading foreign key #" + importedTableName + "." + importedColumnName
+                            + " -> " + exportedTableName + "." + exportedColumnName + " with name " + referenceName);
                     // Primary table
                     Table exportedTable = schema.getTable(exportedTableName);
                     // Primary column
@@ -213,20 +214,12 @@ public class GenericSchemaReader {
                     Table importedTable = schema.getTable(importedTableName);
                     // Foreign column
                     Column importedColumn = importedTable.getColumn(importedColumnName);
-                    // foreign key name
-                    String referenceName = resultSet.getString("FK_NAME");
 
 
-                    reference = exportedTable.getExportedKey(referenceName);
-                    if (reference == null) {
-                        reference = new ForeignKey();
-                        reference.setName(referenceName);
-                        reference.setExportedTable(exportedTable);
-                        reference.setImportedTable(importedTable);
-                    }
-                    else {
-                        reference.setName(referenceName);
-                    }
+                    reference = new ForeignKey();
+                    reference.setName(referenceName);
+                    reference.setExportedTable(exportedTable);
+                    reference.setImportedTable(importedTable);
                     reference.addReferencedColumn(importedColumn, exportedColumn);
 
                     importedTable.addImportedKey(reference);
