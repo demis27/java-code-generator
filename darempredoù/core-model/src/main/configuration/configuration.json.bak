@@ -1,11 +1,16 @@
 {
    "databaseConfiguration":{
-      "url":"jdbc:postgresql://localhost:5432/darempredoù",
-      "user":"darempredoù",
-      "password":"darempredoù",
-      "schema":"darempredoù",
+        "url": "jdbc:postgresql://localhost:5432/darempredoÃ¹",
+        "user": "darempredoÃ¹",
+        "password": "darempredoÃ¹",
+        "schema": "darempredoÃ¹",
       "readData":false,
-      "filter":null,
+        "filters": [
+            {
+                "expression": "ht_+",
+                "target": "TABLE"
+            }
+        ],
       "h2scripts":null,
       "ddl":null
    },
@@ -21,7 +26,6 @@
          "templateName":"/templates/entity/entity.st",
          "path":"src/main/generated-java",
          "target":"table",
-         "filters":null,
          "collision":null
       },
       {
@@ -30,7 +34,6 @@
          "templateName":"/templates/entity/entityTest.st",
          "path":"src/test/generated-java",
          "target":"table",
-         "filters":null,
          "collision":null
       },
       {
@@ -39,7 +42,6 @@
          "templateName":"/templates/entity/identifiable.st",
          "path":"src/main/generated-java",
          "target":"schema",
-         "filters":null,
          "collision":null
       }
       ,{
@@ -48,7 +50,6 @@
          "templateName":"/templates/dao/dao.st",
          "path":"src/main/generated-java",
          "target":"table",
-         "filters":null,
          "collision":null
       },
       {
@@ -57,7 +58,6 @@
          "templateName":"/templates/dao/genericDao.st",
          "path":"src/main/generated-java",
          "target":"schema",
-         "filters":null,
          "collision":null
       },
       {
@@ -66,7 +66,6 @@
          "templateName":"/templates/dao/daoImpl.st",
          "path":"src/main/generated-java",
          "target":"table",
-         "filters":null,
          "collision":null
       },
       {
@@ -75,7 +74,6 @@
          "templateName":"/templates/dao/genericDaoImpl.st",
          "path":"src/main/generated-java",
          "target":"schema",
-         "filters":null,
          "collision":null
       }
    ]

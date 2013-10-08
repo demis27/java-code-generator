@@ -6,6 +6,7 @@ import org.demis.codegen.core.generator.configuration.CodeGeneratorConfiguration
 import org.demis.codegen.core.generator.configuration.DatabaseConfiguration;
 import org.demis.codegen.core.generator.configuration.ObjectConfiguration;
 import org.demis.codegen.core.generator.configuration.TemplateConfiguration;
+import org.demis.codegen.core.generator.configuration.filter.DatabaseFilter;
 import org.demis.codegen.core.mapping.Mapping;
 import org.demis.codegen.core.object.Entity;
 import org.stringtemplate.v4.ST;
@@ -37,6 +38,10 @@ public class CodeGeneratorTest {
         databaseConfiguration.setUser("test");
         databaseConfiguration.setPassword("test");
         configuration.setDatabaseConfiguration(databaseConfiguration);
+        // Database filter
+        DatabaseFilter filter = new DatabaseFilter("ht_+", DatabaseFilter.DatabaseFilterTarget.TABLE);
+        databaseConfiguration.addFilter(filter);
+
         // object
         ObjectConfiguration objectConfiguration = new ObjectConfiguration();
         objectConfiguration.setPackageName("org.demis.family");
@@ -58,11 +63,11 @@ public class CodeGeneratorTest {
         Schema schema = generator.getSchema();
         Assert.assertNotNull(schema);
         Assert.assertNotNull(schema.getTables());
-        Assert.assertEquals(schema.getTables().size(), 8);
+        Assert.assertEquals(schema.getTables().size(), 9);
         // objects
         List<Entity> entities = generator.getEntities();
         Assert.assertNotNull(entities);
-        Assert.assertEquals(entities.size(), 8);
+        Assert.assertEquals(entities.size(), 9);
     }
 
     @Test
@@ -117,7 +122,5 @@ public class CodeGeneratorTest {
         Assert.assertEquals(generator.convertPackageNameToPath("org.demis.family"), "/org/demis/family");
         Assert.assertEquals(generator.convertPackageNameToPath("org.demis"), "/org/demis");
         Assert.assertEquals(generator.convertPackageNameToPath("org"), "/org");
-
-
     }
 }

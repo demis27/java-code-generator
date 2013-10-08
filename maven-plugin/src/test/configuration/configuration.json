@@ -5,7 +5,7 @@
       "password":"family",
       "schema":"family",
       "readData":false,
-      "filter":null,
+      "filters":null,
       "h2scripts":null,
       "ddl":null
    },
@@ -21,7 +21,6 @@
          "path":"src/main/generated-java",
          "target":"table",
          "name":"entity",
-         "filters":null,
          "collision":null
       }
    ]

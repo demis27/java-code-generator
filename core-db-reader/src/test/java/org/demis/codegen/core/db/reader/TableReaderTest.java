@@ -24,7 +24,7 @@ public class TableReaderTest {
 
     @Test
     public void readTables() {
-        Assert.assertEquals(8, schema.getTables().size());
+        Assert.assertEquals(9, schema.getTables().size());
     }
 
     @Test

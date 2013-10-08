@@ -80,7 +80,7 @@ $if(entity.id.simple)$
 $entity.id.properties:{property|
     @Override
     @Id
-    @Column(name = "$property.name$", precision = $property.column.size$)
+    @Column(name = "$property.column.name$", precision = $property.column.size$)
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     public String getId() {
@@ -105,7 +105,7 @@ $endif$
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.properties:{property|
 $if(!property.id && !property.manyToOne)$
-    @Column(name = "$property.name$", nullable = $property.column.nullable$, unique = $property.column.unique$, length = $property.column.size$)
+    @Column(name = "$property.column.name$", nullable = $property.column.nullable$, unique = $property.column.unique$, length = $property.column.size$)
     public $property.javaType$ get$property.nameAsSuffix$() {
         return $property.name$;
     \}

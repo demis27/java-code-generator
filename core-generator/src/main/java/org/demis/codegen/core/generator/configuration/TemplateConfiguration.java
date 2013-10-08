@@ -14,8 +14,6 @@ public class TemplateConfiguration {
 
     private String name;
 
-    private List<FilterConfiguration> filters;
-
     private CollisionTemplateConfiguration collision;
 
     public TemplateConfiguration() {
@@ -59,14 +57,6 @@ public class TemplateConfiguration {
 
     public void setTemplateName(String templateName) {
         this.templateName = templateName;
-    }
-
-    public List<FilterConfiguration> getFilters() {
-        return filters;
-    }
-
-    public void setFilters(List<FilterConfiguration> filters) {
-        this.filters = filters;
     }
 
     public CollisionTemplateConfiguration getCollision() {

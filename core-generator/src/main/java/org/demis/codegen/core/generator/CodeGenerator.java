@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.demis.codegen.core.db.Schema;
+import org.demis.codegen.core.generator.configuration.filter.DatabaseFilter;
 import org.demis.codegen.core.mapping.DataBaseToObjectConverter;
 import org.demis.codegen.core.mapping.Mapping;
 import org.demis.codegen.core.object.Entity;
@@ -68,10 +69,23 @@ public class CodeGenerator {
                 }
             } else if (templateConfiguration.getTarget().equals("table")) {
                 for (Entity entity : entities) {
-                    context.put("entity", entity);
-                    InputStream stream = new FileInputStream(configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
-                    ST template = new ST(IOUtils.toString(IOUtils.toByteArray(stream), "UTF-8"), '$', '$');
-                    generateFile(template, context);
+                    Table table = Mapping.getInstance().getTable(entity);
+                    boolean filtered = false;
+                    if (configuration.getDatabaseConfiguration().getFilters() != null && configuration.getDatabaseConfiguration().getFilters().size() != 0) {
+                        for (DatabaseFilter filter: configuration.getDatabaseConfiguration().getFilters()) {
+                            filtered = filtered || (filter.match(table.getName()) && (filter.getTarget() == DatabaseFilter.DatabaseFilterTarget.TABLE));
+                        }
+                    }
+                    if (!filtered) {
+                        logger.debug("Generation file for template : " + templateConfiguration.getName() + " for table " + table.getName());
+                        context.put("entity", entity);
+                        InputStream stream = new FileInputStream(configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
+                        ST template = new ST(IOUtils.toString(IOUtils.toByteArray(stream), "UTF-8"), '$', '$');
+                        generateFile(template, context);
+                    }
+                    else {
+                        logger.debug("No generation file for template : " + templateConfiguration.getName() + " for table " + table.getName());
+                    }
                 }
             } else if (templateConfiguration.getTarget().equals("schema")) {
                 context.put("schema", schema);
@@ -287,34 +301,4 @@ public class CodeGenerator {
     public Schema getSchema() {
         return schema;
     }
-/*
-    public boolean filtered(TemplateConfiguration templateConfiguration, Entity descriptor) {
-        // Unit test
-        if (templateConfiguration != null 
-                && descriptor != null
-                && templateConfiguration.getFilters() != null
-                && templateConfiguration.getFilters().size() > 0) {
-            for (FilterConfiguration filter: templateConfiguration.getFilters()) {
-                try {
-                    TemplateFilter templateFilter = (TemplateFilter) (Class.forName(filter.getClassname()).newInstance());
-                    if (templateFilter.acceptMode(templateConfiguration.getTarget())) {
-                        if (templateFilter.filterTemplate(descriptor)) {
-                            return true;
-                        }
-                    }
-                } catch (ClassNotFoundException ex) {
-                    // TODO Log
-                } catch (InstantiationException ex) {
-                    // TODO Log
-                } catch (IllegalAccessException ex) {
-                    // TODO Log
-                }
-            }
-            return false;
-        }
-        else {
-            return false;
-        }
-    }
-*/
 }

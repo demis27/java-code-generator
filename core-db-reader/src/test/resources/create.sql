@@ -167,3 +167,20 @@ WITH (
 );
 ALTER TABLE "Test"."MultiFkC"
   OWNER TO postgres;
+
+
+--------------------------------------------------------------------------------
+-- Table: "Test".ht_filtered
+
+-- DROP TABLE "Test".ht_filtered;
+
+CREATE TABLE "Test".ht_filtered
+(
+  ht_id integer NOT NULL,
+  CONSTRAINT ht_pk PRIMARY KEY (ht_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "Test".ht_filtered
+  OWNER TO postgres;

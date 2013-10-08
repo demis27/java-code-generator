@@ -1,5 +1,10 @@
 package org.demis.codegen.core.generator.configuration;
 
+import org.demis.codegen.core.generator.configuration.filter.DatabaseFilter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseConfiguration {
 
     private String url;
@@ -12,11 +17,11 @@ public class DatabaseConfiguration {
 
     private boolean readData;
 
-    private String filter;
-
     private String h2scripts;
 
     private String ddl;
+
+    private List<DatabaseFilter> filters = new ArrayList<>();
 
     public DatabaseConfiguration() {
     }
@@ -53,14 +58,6 @@ public class DatabaseConfiguration {
         this.user = user;
     }
 
-    public String getFilter() {
-        return filter;
-    }
-
-    public void setFilter(String filter) {
-        this.filter = filter;
-    }
-
     public boolean isReadData() {
         return readData;
     }
@@ -85,6 +82,15 @@ public class DatabaseConfiguration {
         this.ddl = ddl;
     }
 
+    public void addFilter(DatabaseFilter filter) {
+        filters.add(filter);
+    }
+
+    public List<DatabaseFilter> getFilters() {
+        return filters;
+    }
+
+
     @Override
     public String toString() {
         return "DatabaseConfiguration{" +
@@ -93,7 +99,6 @@ public class DatabaseConfiguration {
                 ", password='" + password + '\'' +
                 ", schema='" + schema + '\'' +
                 ", readData=" + readData +
-                ", filter='" + filter + '\'' +
                 ", h2scripts='" + h2scripts + '\'' +
                 ", ddl='" + ddl + '\'' +
                 '}';
