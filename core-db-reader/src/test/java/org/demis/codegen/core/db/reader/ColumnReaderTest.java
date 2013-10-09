@@ -30,7 +30,7 @@ public class ColumnReaderTest {
         Assert.assertNotNull(simpleTable);
         Assert.assertEquals(simpleTable.getRemarks(), "A simple table");
         Assert.assertEquals(simpleTable.getSchema(), schema);
-        Assert.assertEquals(simpleTable.getColumns().size(), 1);
+        Assert.assertEquals(simpleTable.getColumns().size(), 3);
 
         Column simpleColumn = simpleTable.getColumn("SimpleColumn");
         Assert.assertNotNull(simpleColumn);
@@ -48,5 +48,23 @@ public class ColumnReaderTest {
         Assert.assertEquals(simpleColumn.isUnique(), false);
     }
 
+    @Test
+    public void readNotNullColumn() {
+        Table simpleTable = schema.getTable("SimpleTable");
+        Assert.assertNotNull(simpleTable);
 
+        Column column = simpleTable.getColumn("not_null_column");
+        Assert.assertNotNull(column);
+        Assert.assertTrue(column.isNotNull());
+    }
+
+    @Test
+    public void readUniqueColumn() {
+        Table simpleTable = schema.getTable("SimpleTable");
+        Assert.assertNotNull(simpleTable);
+
+        Column column = simpleTable.getColumn("unique_column");
+        Assert.assertNotNull(column);
+        Assert.assertTrue(column.isUnique());
+    }
 }

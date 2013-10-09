@@ -52,6 +52,7 @@ public class GenericSchemaReader {
             readColumns(configuration, schema);
             readPrimaryKeys(configuration, schema);
             readForeignKeys(configuration, schema);
+            readUnique(configuration, schema);
         }
         return schema;
     }
@@ -225,6 +226,33 @@ public class GenericSchemaReader {
                     importedTable.addImportedKey(reference);
                     exportedTable.addExportedKey(reference);
                 }
+            }
+        } catch (SQLException ex) {
+            logger.error("Error when reading foreign keys", ex);
+        } finally {
+            cleanConnection(connection, null, resultSet);
+        }
+    }
+
+    public void readUnique(DatabaseConfiguration configuration, Schema schema) {
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = getConnection(configuration);
+            DatabaseMetaData metaData = connection.getMetaData();
+            for (Table table : schema.getTables()) {
+                resultSet = metaData.getIndexInfo(null,
+                        configuration.getSchemaName(),
+                        table.getName(),
+                        true,
+                        false);
+                while (resultSet.next()) {
+                    String columnName = resultSet.getString("COLUMN_NAME");
+                    Column column = table.getColumn(columnName);
+                    column.setUnique(true);
+                }
+
             }
         } catch (SQLException ex) {
             logger.error("Error when reading foreign keys", ex);

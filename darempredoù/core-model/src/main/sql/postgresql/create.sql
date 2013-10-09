@@ -19,7 +19,7 @@ create table darempredoù."user_group_label" (
         on update no action on delete no action
 );
 
-create table darempredoù."user" (
+create table darempredoù."application_user" (
     user_id             character varying(32) not null,
     creation_date       timestamp without time zone default current_date,
     modification_date   timestamp without time zone default current_date,

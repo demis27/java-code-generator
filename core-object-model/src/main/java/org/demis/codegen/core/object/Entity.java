@@ -1,5 +1,6 @@
 package org.demis.codegen.core.object;
 
+import org.demis.codegen.core.db.Table;
 import org.demis.codegen.util.NameUtil;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class Entity {
     private List<OneToMany> oneToManyRelations = new ArrayList<>();
 
     private List<ManyToOne> manyToOneRelations = new ArrayList<>();
+
+    private Table table;
 
     public Entity() {
         // no op
@@ -114,6 +117,14 @@ public class Entity {
 
     public void addManyToOneRelation(ManyToOne manyToOneRelations) {
         this.manyToOneRelations.add(manyToOneRelations);
+    }
+
+    public Table getTable() {
+        return table;
+    }
+
+    public void setTable(Table table) {
+        this.table = table;
     }
 
     @Override

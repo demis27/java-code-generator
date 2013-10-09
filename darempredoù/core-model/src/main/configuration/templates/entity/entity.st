@@ -1,4 +1,4 @@
-package $defaultPackageName$.domain ;
+package $defaultPackageName$.domain;
 
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.MERGE;
@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Entity
-@Table(name = "$entity.name$")
+@Table(name = "$entity.table.name$")
 $if(entity.id.simple)$
 $entity.id.properties:{property|
 public class $entity.name$ implements Identifiable<$property.javaType$>, Serializable {
@@ -113,7 +113,6 @@ $if(!property.id && !property.manyToOne)$
     public void set$property.nameAsSuffix$($property.javaType$ $property.name$) {
         this.$property.name$ = $property.name$;
     \}
-
 $endif$
 }$
 
@@ -145,7 +144,7 @@ $if(entity.oneToManyRelations)$
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.oneToManyRelations:{oneToMany|
 $if(oneToMany.simple)$
-    @OneToMany(mappedBy = "$oneToMany.owner.name$", orphanRemoval = true, cascade = ALL)
+    @OneToMany(mappedBy = "$oneToMany.owner.nameLowerFirst$", orphanRemoval = true, cascade = ALL)
     public List<$oneToMany.associatedEntity.name$> get$oneToMany.associatedEntity.pluralUpperFirst$() {
         return $oneToMany.associatedEntity.pluralLowerFirst$;
     \}

@@ -20,9 +20,16 @@ COMMENT ON TABLE "Test"."EmptyTable"
   IS 'An empty table';
 
 --------------------------------------------------------------------------------
+-- Table: "Test"."SimpleTable"
+
+-- DROP TABLE "Test"."SimpleTable";
+
 CREATE TABLE "Test"."SimpleTable"
 (
-  "SimpleColumn" integer -- A simple column
+  "SimpleColumn" integer, -- A simple column
+  not_null_column integer NOT NULL,
+  unique_column integer,
+  CONSTRAINT unique_column UNIQUE (unique_column)
 )
 WITH (
   OIDS=FALSE

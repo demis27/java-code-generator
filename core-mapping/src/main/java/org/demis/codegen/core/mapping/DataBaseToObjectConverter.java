@@ -54,6 +54,7 @@ public class DataBaseToObjectConverter {
         Entity entity = new Entity();
 
         entity.setName(convertDataBaseName(table.getName()));
+        entity.setTable(table);
         Mapping.getInstance().addMapping(table, entity);
 
         logger.info("Conver table to entity = " + entity);

@@ -53,6 +53,14 @@
             "collision": null
         }
         ,{
+            "name": "persistence-test-util",
+            "fileNameTemplate": "{packageName}/PersistenceTestUtil.java",
+            "templateName": "/templates/entity/persistenceTestUtil.st",
+            "path": "src/test/generated-java",
+            "target": "schema",
+            "collision": null
+        }
+        ,{
             "name": "entity-persistence-test",
             "fileNameTemplate": "{packageName}/domain/{className}PersistenceTest.java",
             "templateName": "/templates/entity/entityPersistenceTest.st",
