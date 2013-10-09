@@ -68,5 +68,29 @@
             "target": "table",
             "collision": null
         }
+        ,{
+            "name":"genericDao",
+            "fileNameTemplate":"{packageName}/dao/GenericDAO.java",
+            "templateName":"/templates/dao/genericDao.st",
+            "path":"src/main/generated-java",
+            "target":"schema",
+            "collision":null
+        }
+        ,{
+            "name":"genericDaoImpl",
+            "fileNameTemplate":"{packageName}/dao/GenericDAOImpl.java",
+            "templateName":"/templates/dao/genericDaoImpl.st",
+            "path":"src/main/generated-java",
+            "target":"schema",
+            "collision":null
+        }
+        ,{
+            "name":"dao",
+            "fileNameTemplate":"{packageName}/dao/{className}DAO.java",
+            "templateName":"/templates/dao/dao.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
     ]
 }

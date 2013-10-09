@@ -33,17 +33,11 @@ public class $entity.name$PersistenceTest {
 
     public static $entity.name$ create$entity.name$() {
         $entity.name$ $entity.nameLowerFirst$ = new $entity.name$();
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // raw properties
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.properties:{property|
 $if(!property.id && !property.manyToOne && !property.column.nullable)$
         $entity.nameLowerFirst$.set$property.nameAsSuffix$(PersistenceTestUtil.generateRandomString($property.column.size$));
 $endif$
 }$
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Many to one
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.manyToOneRelations:{manyToOne|
 $if(manyToOne.simple)$
         $entity.nameLowerFirst$.set$manyToOne.associatedEntity.name$($manyToOne.associatedEntity.name$PersistenceTest.create$manyToOne.associatedEntity.name$());
