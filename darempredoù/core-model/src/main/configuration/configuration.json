@@ -23,7 +23,7 @@
         {
             "name": "entity",
             "fileNameTemplate": "{packageName}/domain/{className}.java",
-            "templateName": "/templates/entity/entity.st",
+            "templateName": "/templates/entity/Entity.java.st",
             "path": "src/main/generated-java",
             "target": "table",
             "collision": null
@@ -31,7 +31,7 @@
         ,{
             "name": "entity-test",
             "fileNameTemplate": "{packageName}/domain/{className}Test.java",
-            "templateName": "/templates/entity/entityTest.st",
+            "templateName": "/templates/entity/EntityTest.java.st",
             "path": "src/test/generated-java",
             "target": "table",
             "collision": null
@@ -39,7 +39,7 @@
         ,{
             "name": "identifiable",
             "fileNameTemplate": "{packageName}/domain/Identifiable.java",
-            "templateName": "/templates/entity/identifiable.st",
+            "templateName": "/templates/entity/Identifiable.java.st",
             "path": "src/main/generated-java",
             "target": "schema",
             "collision": null
@@ -55,7 +55,7 @@
         ,{
             "name": "persistence-test",
             "fileNameTemplate": "{packageName}/PersistenceTest.java",
-            "templateName": "/templates/entity/persistenceTest.st",
+            "templateName": "/templates/entity/PersistenceTest.java.st",
             "path": "src/test/generated-java",
             "target": "schema",
             "collision": null
@@ -63,7 +63,7 @@
         ,{
             "name": "persistence-test-util",
             "fileNameTemplate": "{packageName}/PersistenceTestUtil.java",
-            "templateName": "/templates/entity/persistenceTestUtil.st",
+            "templateName": "/templates/entity/PersistenceTestUtil.java.st",
             "path": "src/test/generated-java",
             "target": "schema",
             "collision": null
@@ -71,7 +71,7 @@
         ,{
             "name": "entity-persistence-test",
             "fileNameTemplate": "{packageName}/domain/{className}PersistenceTest.java",
-            "templateName": "/templates/entity/entityPersistenceTest.st",
+            "templateName": "/templates/entity/EntityPersistenceTest.java.st",
             "path": "src/test/generated-java",
             "target": "table",
             "collision": null
@@ -79,7 +79,7 @@
         ,{
             "name":"genericDao",
             "fileNameTemplate":"{packageName}/dao/GenericDAO.java",
-            "templateName":"/templates/dao/genericDao.st",
+            "templateName":"/templates/dao/GenericDAO.java.st",
             "path":"src/main/generated-java",
             "target":"schema",
             "collision":null
@@ -87,7 +87,7 @@
         ,{
             "name":"genericDaoImpl",
             "fileNameTemplate":"{packageName}/dao/GenericDAOImpl.java",
-            "templateName":"/templates/dao/genericDaoImpl.st",
+            "templateName":"/templates/dao/GenericDAOImpl.java.st",
             "path":"src/main/generated-java",
             "target":"schema",
             "collision":null
@@ -95,7 +95,15 @@
         ,{
             "name":"dao",
             "fileNameTemplate":"{packageName}/dao/{className}DAO.java",
-            "templateName":"/templates/dao/dao.st",
+            "templateName":"/templates/dao/EntityDAO.java.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
+        ,{
+            "name":"daoImpl",
+            "fileNameTemplate":"{packageName}/dao/{className}DAOImpl.java",
+            "templateName":"/templates/dao/EntityDAOImpl.java.st",
             "path":"src/main/generated-java",
             "target":"table",
             "collision":null
