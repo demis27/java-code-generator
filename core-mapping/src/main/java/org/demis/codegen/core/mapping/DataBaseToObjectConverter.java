@@ -1,5 +1,6 @@
 package org.demis.codegen.core.mapping;
 
+import org.demis.codegen.core.object.EntityPackage;
 import org.demis.codegen.util.NameUtil;
 import org.demis.codegen.core.db.*;
 import org.demis.codegen.core.object.*;
@@ -23,8 +24,10 @@ public class DataBaseToObjectConverter {
     private DataBaseToObjectConverter() {
     }
 
-    public List<Entity> convertSchema(Schema schema) {
+    public EntityPackage convertSchema(Schema schema) {
         logger.info("Convert schema = " + schema);
+        EntityPackage entityEntityPackage = new EntityPackage();
+
         List<Entity> entities = new ArrayList<>();
 
         for (Table table: schema.getTables()) {
@@ -45,8 +48,8 @@ public class DataBaseToObjectConverter {
                 convertToOneToManyReference(foreignKey);
             }
         }
-
-        return entities;
+        entityEntityPackage.setEntities(entities);
+        return entityEntityPackage;
     }
 
     public Entity convertTable(Table table) {

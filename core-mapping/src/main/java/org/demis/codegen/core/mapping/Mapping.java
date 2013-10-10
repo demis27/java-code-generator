@@ -1,8 +1,10 @@
 package org.demis.codegen.core.mapping;
 
 import org.demis.codegen.core.db.Column;
+import org.demis.codegen.core.db.Schema;
 import org.demis.codegen.core.db.Table;
 import org.demis.codegen.core.object.Entity;
+import org.demis.codegen.core.object.EntityPackage;
 import org.demis.codegen.core.object.Property;
 
 import java.util.HashMap;
@@ -19,6 +21,11 @@ public class Mapping {
     }
 
     private Mapping() {
+    }
+
+    public void addMapping(Schema schema, EntityPackage entityPackage) {
+        mapping.put(schema, entityPackage);
+        mapping.put(entityPackage, schema);
     }
 
     public void addMapping(Table table, Entity entity) {
@@ -46,5 +53,13 @@ public class Mapping {
 
     public Property getProperty(Column column) {
         return (Property)(mapping.get(column));
+    }
+
+    public Schema getSchema(EntityPackage entityPackage) {
+        return (Schema)(mapping.get(entityPackage));
+    }
+
+    public EntityPackage getEntityPackage(Schema schema) {
+        return (EntityPackage)(mapping.get(schema));
     }
 }

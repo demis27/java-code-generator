@@ -45,6 +45,14 @@
             "collision": null
         }
         ,{
+            "name": "persistence-unit",
+            "fileNameTemplate": "/META-INF/persistence.xml",
+            "templateName": "/templates/entity/persistence.xml.st",
+            "path": "src/main/generated-resources",
+            "target": "schema",
+            "collision": null
+        }
+        ,{
             "name": "persistence-test",
             "fileNameTemplate": "{packageName}/PersistenceTest.java",
             "templateName": "/templates/entity/persistenceTest.st",

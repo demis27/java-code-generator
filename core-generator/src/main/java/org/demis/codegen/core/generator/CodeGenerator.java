@@ -9,16 +9,14 @@ import org.demis.codegen.core.generator.configuration.*;
 import org.demis.codegen.core.generator.configuration.CodeGeneratorConfiguration;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import org.demis.codegen.core.db.Schema;
 import org.demis.codegen.core.generator.configuration.filter.DatabaseFilter;
 import org.demis.codegen.core.mapping.DataBaseToObjectConverter;
 import org.demis.codegen.core.mapping.Mapping;
 import org.demis.codegen.core.object.Entity;
+import org.demis.codegen.core.object.EntityPackage;
 import org.demis.codegen.core.object.Property;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,16 +38,32 @@ public class CodeGenerator {
         this.configuration = configuration;
     }
     private Schema schema;
-    private List<Entity> entities;
+    private EntityPackage entityPackage;
 
     public void generate() throws DatabaseReadingException, IOException {
         schema = readSchema(configuration.getDatabaseConfiguration());
 
-        entities = generateObjectModel(configuration, schema);
+        entityPackage = generateObjectModel(configuration, schema);
+
+        // filter
+        List<Entity> entities = new ArrayList<>();
+        for (Entity entity : entityPackage.getEntities()) {
+            Table table = Mapping.getInstance().getTable(entity);
+            boolean filtered = false;
+            if (configuration.getDatabaseConfiguration().getFilters() != null && configuration.getDatabaseConfiguration().getFilters().size() != 0) {
+                for (DatabaseFilter filter: configuration.getDatabaseConfiguration().getFilters()) {
+                    filtered = filtered || (filter.match(table.getName()) && (filter.getTarget() == DatabaseFilter.DatabaseFilterTarget.TABLE));
+                }
+            }
+            if (!filtered) {
+                entities.add(entity);
+            }
+        }
+        entityPackage.setEntities(entities);
 
         Map<String, Object> context = new HashMap<>();
-
         context.put("mapping", Mapping.getInstance());
+        context.put("package", entityPackage);
         context.put("databaseConfiguration", configuration.getDatabaseConfiguration());
         context.put("objectConfiguration", configuration.getObjectConfiguration());
         context.put("defaultPackageName", configuration.getObjectConfiguration().getPackageName());
@@ -59,7 +73,7 @@ public class CodeGenerator {
 
             context.put("templateConfiguration", templateConfiguration);
             if (templateConfiguration.getTarget().equals("column")) {
-                for (Entity entity : entities) {
+                for (Entity entity : entityPackage.getEntities()) {
                     for (Property property: entity.getProperties()) {
                         context.put("propertyDescriptor", property);
                         InputStream stream = new FileInputStream(configuration.getTemplatesPath() + templateConfiguration.getTemplateName());
@@ -68,7 +82,7 @@ public class CodeGenerator {
                     }
                 }
             } else if (templateConfiguration.getTarget().equals("table")) {
-                for (Entity entity : entities) {
+                for (Entity entity : entityPackage.getEntities()) {
                     Table table = Mapping.getInstance().getTable(entity);
                     boolean filtered = false;
                     if (configuration.getDatabaseConfiguration().getFilters() != null && configuration.getDatabaseConfiguration().getFilters().size() != 0) {
@@ -249,22 +263,15 @@ public class CodeGenerator {
 */
     }
 
-    public List<Entity> generateObjectModel(CodeGeneratorConfiguration configuration, Schema schema) {
-        List<Entity> entities = DataBaseToObjectConverter.getInstance().convertSchema(schema);
+    public EntityPackage generateObjectModel(CodeGeneratorConfiguration configuration, Schema schema) {
+        EntityPackage entityPackage = DataBaseToObjectConverter.getInstance().convertSchema(schema);
+        entityPackage.setName(configuration.getObjectConfiguration().getPackageName());
 
-
-        for (Entity entity : entities) {
+        for (Entity entity : entityPackage.getEntities()) {
             Table table = Mapping.getInstance().getTable(entity);
-
-
-//            PackageDescriptor packageDescriptor = new PackageDescriptor();
-//            packageDescriptor.setName(configuration.getObjectConfiguration().getPackageName() + "." + nameHelper.getPackageName(entity));
-
-//            entity.setPackageDescriptor(packageDescriptor);
             Mapping.getInstance().addMapping(table, entity);
         }
-
-        return entities;
+        return entityPackage;
     }
 
     public String parseFileName(CodeGeneratorConfiguration configuration, Entity entity, String templateFileName) {
@@ -294,8 +301,8 @@ public class CodeGenerator {
         return buffer.toString();
     }
 
-    public List<Entity> getEntities() {
-        return entities;
+    public EntityPackage getEntityPackage() {
+        return entityPackage;
     }
 
     public Schema getSchema() {

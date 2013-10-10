@@ -4,8 +4,10 @@
 
     <persistence-unit name="darempredou" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>org.demis.darempredou.domain.ApplicationUser</class>
-        <class>org.demis.darempredou.domain.UserGroup</class>
+        <!-- $package.name$ -->
+$package.entities:{entity|
+        <class>$defaultPackageName$.domain.$entity.name$</class>
+}$
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

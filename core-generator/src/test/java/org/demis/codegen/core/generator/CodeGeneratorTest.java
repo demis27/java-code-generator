@@ -9,6 +9,7 @@ import org.demis.codegen.core.generator.configuration.TemplateConfiguration;
 import org.demis.codegen.core.generator.configuration.filter.DatabaseFilter;
 import org.demis.codegen.core.mapping.Mapping;
 import org.demis.codegen.core.object.Entity;
+import org.demis.codegen.core.object.EntityPackage;
 import org.stringtemplate.v4.ST;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -65,9 +66,10 @@ public class CodeGeneratorTest {
         Assert.assertNotNull(schema.getTables());
         Assert.assertEquals(schema.getTables().size(), 9);
         // objects
-        List<Entity> entities = generator.getEntities();
-        Assert.assertNotNull(entities);
-        Assert.assertEquals(entities.size(), 9);
+        EntityPackage entityPackage = generator.getEntityPackage();
+        Assert.assertNotNull(entityPackage);
+        Assert.assertNotNull(entityPackage.getEntities());
+        Assert.assertEquals(entityPackage.getEntities().size(), 9);
     }
 
     @Test
