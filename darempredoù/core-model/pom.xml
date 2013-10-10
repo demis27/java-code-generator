@@ -44,6 +44,11 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.2.3.Final</version>
         </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
 
     </dependencies>
 	<build>

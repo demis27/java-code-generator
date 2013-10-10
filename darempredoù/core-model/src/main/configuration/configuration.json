@@ -108,5 +108,13 @@
             "target":"table",
             "collision":null
         }
+        ,{
+            "name":"dao-test",
+            "fileNameTemplate":"{packageName}/dao/{className}DAOTest.java",
+            "templateName":"/templates/dao/EntityDAOTest.java.st",
+            "path":"src/test/generated-java",
+            "target":"table",
+            "collision":null
+        }
     ]
 }
