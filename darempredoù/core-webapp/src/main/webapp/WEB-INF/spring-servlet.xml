@@ -15,7 +15,7 @@
 
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="org.demis.darempredou.controller" />
+    <context:component-scan base-package="org.demis.darempredou" />
 
     <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
         <property name="contentType" value="text/plain"/>
@@ -40,4 +40,6 @@
     </bean>
 
     <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+
+    <bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
 </beans>

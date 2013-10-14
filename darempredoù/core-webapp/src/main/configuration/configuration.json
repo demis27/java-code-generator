@@ -28,5 +28,13 @@
             "target":"table",
             "collision":null
         }
+        ,{
+            "name": "persistence-unit",
+            "fileNameTemplate": "/META-INF/persistence.xml",
+            "templateName": "/templates/entity/persistence.xml.st",
+            "path": "src/main/generated-resources",
+            "target": "schema",
+            "collision": null
+        }
     ]
 }
