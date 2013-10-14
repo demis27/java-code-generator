@@ -1,0 +1,32 @@
+{
+    "databaseConfiguration": {
+        "url": "jdbc:postgresql://localhost:5432/darempredoù",
+        "user": "darempredoù",
+        "password": "darempredoù",
+        "schema": "darempredoù",
+        "readData": false,
+        "filters": [
+            {
+                "expression": "ht_.+",
+                "target": "TABLE"
+            }
+        ],
+        "h2scripts": null,
+        "ddl": null
+    },
+    "objectConfiguration": {
+        "packageName": "org.demis.darempredou"
+    },
+    "projectPath": "",
+    "templatesPath": "/src/main/configuration/",
+    "filesConfiguration": [
+        {
+            "name":"controller",
+            "fileNameTemplate":"{packageName}/controller/{className}Controller.java",
+            "templateName":"/templates/controller/EntityController.java.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
+    ]
+}

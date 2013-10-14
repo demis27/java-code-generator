@@ -132,13 +132,5 @@
             "target":"table",
             "collision":null
         }
-        ,{
-            "name":"controller",
-            "fileNameTemplate":"{packageName}/controller/{className}Controller.java",
-            "templateName":"/templates/controller/EntityController.java.st",
-            "path":"src/main/generated-java",
-            "target":"table",
-            "collision":null
-        }
     ]
 }

@@ -61,7 +61,7 @@ $if(entity.oneToManyRelations)$
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.oneToManyRelations:{oneToMany|
 $if(oneToMany.simple)$
-    private List<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.pluralLowerFirst$ = new ArrayList<>();
+    private List<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.pluralLowerFirst$ = new ArrayList<$oneToMany.associatedEntity.name$>();
 $endif$
 }$
 $endif$

@@ -36,3 +36,34 @@ create table darempredoù."application_user" (
         on update no action on delete no action
 );
 
+-- Group/Enterprise/Etablishment
+
+create table darempredoù.enterprise_group (
+	enterprise_group_id 		character varying(32) not null,
+	creation_date       		timestamp without time zone default current_date,
+	modification_date   		timestamp without time zone default current_date,
+	name 				character varying(256) not null,
+	constraint enterprise_group_pkey primary key (enterprise_group_id)
+) ;
+
+create table darempredoù.enterprise (
+	enterprise_id 			character varying(32) not null,
+	creation_date       		timestamp without time zone default current_date,
+	modification_date   		timestamp without time zone default current_date,
+	name 				character varying(256) not null,
+	enterprise_group_id 		character varying(32),
+	constraint enterprise_pkey primary key (enterprise_id),
+	constraint group_enterprise foreign key (enterprise_group_id) references darempredoù.enterprise_group (enterprise_group_id)
+) ;
+
+create table darempredoù.etablishment (
+	etablishment_id 		character varying(32) not null,
+	creation_date       		timestamp without time zone default current_date,
+	modification_date   		timestamp without time zone default current_date,
+	name 				character varying(256) not null,
+	enterprise_id 			character varying(32),
+	constraint etablishment_pkey primary key (etablishment_id),
+	constraint enterprise_etablishment foreign key (enterprise_id) references darempredoù.enterprise (enterprise_id)
+) ;
+
+

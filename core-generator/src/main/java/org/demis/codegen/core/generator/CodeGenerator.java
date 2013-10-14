@@ -22,10 +22,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.stringtemplate.v4.ST;
 
-/**
- * @version 1.0
- * @author <a href="mailto:demis27@demis27.net">Stéphane kermabon</a>
- */
 public class CodeGenerator {
 
     private final Logger logger = LoggerFactory.getLogger(CodeGenerator.class);
@@ -120,13 +116,39 @@ public class CodeGenerator {
         return filename;
     }
 
+    public String getCollisionFileName(CodeGeneratorConfiguration configuration, TemplateConfiguration templateConfiguration, Entity entity) {
+        String projectPath = configuration.getProjectPath();
+        String path = templateConfiguration.getPath();
+
+        String filename = projectPath + "/" + path + templateConfiguration.getCollision().getResultPath();
+        filename = parseFileName(configuration, entity, filename);
+
+        return filename;
+    }
+
     public void generateFile(ST template, Map<String, Object> context) {
         // Generate the result
         for (String entry: context.keySet()) {
             template.add(entry, context.get(entry));
         }
-        // Save the result
-        String filename = getFileName((CodeGeneratorConfiguration)context.get("configuration"), (TemplateConfiguration)context.get("templateConfiguration"), (Entity)context.get("entity"));
+        String filename;
+        // Test for collision
+        if (((TemplateConfiguration)context.get("templateConfiguration")).getCollision() != null &&
+                ((TemplateConfiguration)context.get("templateConfiguration")).getCollision().isManage()) {
+            String checkFilename = getFileName((CodeGeneratorConfiguration)context.get("configuration"), (TemplateConfiguration)context.get("templateConfiguration"), (Entity)context.get("entity"));
+            File file = new File(checkFilename);
+            if (file.exists()) {
+                filename = getCollisionFileName((CodeGeneratorConfiguration)context.get("configuration"), (TemplateConfiguration)context.get("templateConfiguration"), (Entity)context.get("entity"));
+                context.put("collision", Boolean.FALSE);
+            }
+            else {
+                filename = getFileName((CodeGeneratorConfiguration)context.get("configuration"), (TemplateConfiguration)context.get("templateConfiguration"), (Entity)context.get("entity"));
+            }
+        }
+        else {
+            filename = getFileName((CodeGeneratorConfiguration)context.get("configuration"), (TemplateConfiguration)context.get("templateConfiguration"), (Entity)context.get("entity"));
+        }
+
         FileOutputStream fileOutput = null;
 
         File filePath = new File(filename.substring(0, filename.lastIndexOf('/')));
@@ -145,80 +167,6 @@ public class CodeGenerator {
                 e.printStackTrace();
             }
         }
-
-
-/*
-        String path = null;
-        String projectPath = null;
-        String checkFilename, collisionFilename;
-
-        try {
-            TemplateConfiguration templateConfiguration = ((TemplateConfiguration) (context.get("templateConfiguration")));
-            Entity entities = (ClassDescriptor) context.get("entities");
-            CollisionTemplateConfiguration collision = ((TemplateConfiguration) (context.get("templateConfiguration"))).getCollision();
-
-            // project path
-            projectPath = ((CodeGeneratorConfiguration) (context.get("configuration"))).getProjectPath();
-
-            // generationFilename
-            path = templateConfiguration.getPath();
-            filename = projectPath + File.separator + path + File.separator + templateConfiguration.getFileNameTemplate();
-            filename = parseFileName(entities, filename);
-
-            context.put("collision", Boolean.FALSE);
-            // check collision
-            if (collision != null && collision.isManage()) {
-
-                // checkFilename
-                checkFilename = projectPath + File.separator + collision.getCheckPath() + File.separator + templateConfiguration.getFileNameTemplate();
-                if (entities != null) {
-                    checkFilename = parseFileName(entities, checkFilename);
-                }
-                File checkFile = new File(checkFilename);
-                if (checkFile.exists()) {
-                    collisionFilename = projectPath + File.separator + collision.getResultPath() + File.separator + collision.getFilename();
-                    filename = parseFileName(entities, collisionFilename);
-                    context.put("collision", Boolean.TRUE);
-                    logger.info("generate file with filename for collision : " + filename);
-                }
-            }
-
-
-//            logger.info("collision for template " + templateConfiguration.getName()
-//                    + " and " + entities.getClassName() + " : "
-//                    + (collision != null ? collision.isManage() : "null")
-//                    + " file exist : " + filename + " " + generationFile.exists());
-
-
-            // call template
-            StringWriter writer = new StringWriter();
-            velocityTemplate.merge(context, writer);
-            writer.toString().getBytes());
-
-            if (logger.isInfoEnabled()) {
-                logger.info("generate file with filename : " + filename);
-                logger.info("generate file with path : " + path);
-            }
-
-        } catch (ResourceNotFoundException ex) {
-            logger.error("Error when generate file : filename = " + filename, ex);
-        } catch (ParseErrorException ex) {
-            logger.error("Error when generate file : filename = " + filename, ex);
-        } catch (MethodInvocationException ex) {
-            logger.error("Error when generate file : filename = " + filename, ex);
-        } catch (IOException ex) {
-            logger.error("Error when generate file : filename = " + filename, ex);
-        }
-        finally {
-            if (fileOutput != null) {
-                try {
-                    fileOutput.close();
-                } catch (IOException ex) {
-                    logger.error("Error when generate file : filename = " + filename, ex);
-                }
-            }
-        }
-*/
     }
 
     public Schema readSchema(DatabaseConfiguration databaseConfiguration) throws DatabaseReadingException {
@@ -279,7 +227,6 @@ public class CodeGenerator {
         if (entity != null) {
             result = result.replaceAll("\\{className\\}", entity.getName());
 //            result = result.replaceAll("\\{objectName\\}", entity.getObjectName());
-//            PackageDescriptor packageDescriptor = entity.getPackageDescriptor();
         }
         if (configuration.getObjectConfiguration().getPackageName() != null) {
             result = result.replaceAll("\\{packageName\\}", convertPackageNameToPath(configuration.getObjectConfiguration().getPackageName()));

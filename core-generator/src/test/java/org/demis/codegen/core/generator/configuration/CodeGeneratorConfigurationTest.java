@@ -35,6 +35,13 @@ public class CodeGeneratorConfigurationTest {
         pojo.setTemplateName("templates/pojo/pojo-class.vm");
         pojo.setPath("src/main/generated-java");
         pojo.setTarget("table");
+        // Collision
+        CollisionTemplateConfiguration collision = new CollisionTemplateConfiguration();
+        collision.setManage(true);
+        collision.setFilename("{packageName}/{className}Base.java");
+        collision.setResultPath("src/main/generated-java");
+        collision.setCheckPath("src/main/java");
+        pojo.setCollision(collision);
         configuration.addFileConfiguration(pojo);
 
         String json = ConfigurationWriter.toJSON(configuration);
@@ -44,7 +51,44 @@ public class CodeGeneratorConfigurationTest {
 
     @Test
     public void readCodeGeneratorConfiguration() throws IOException {
-        CodeGeneratorConfiguration configuration = ConfigurationReader.readJSON("{\"databaseConfiguration\":{\"url\":\"jdbc:postgresql://localhost:5432/test\",\"user\":\"test\",\"password\":\"test\",\"schema\":\"Test\",\"readData\":false,\"h2scripts\":null,\"ddl\":null,\"filters\":[{\"expression\":\"ht_+\",\"target\":\"TABLE\"}]},\"objectConfiguration\":{\"packageName\":\"org.demis.family\"},\"defaultPackageName\":null,\"projectPath\":\".\",\"templatesPath\":null,\"filesConfiguration\":[{\"fileNameTemplate\":\"{packageName}/{className}.java\",\"templateName\":\"templates/pojo/pojo-class.vm\",\"path\":\"src/main/generated-java\",\"target\":\"table\",\"name\":\"pojo\",\"collision\":null}]}");
+        CodeGeneratorConfiguration configuration = ConfigurationReader.readJSON("{\n" +
+                "    \"databaseConfiguration\": {\n" +
+                "        \"url\": \"jdbc:postgresql://localhost:5432/test\",\n" +
+                "        \"user\": \"test\",\n" +
+                "        \"password\": \"test\",\n" +
+                "        \"schema\": \"Test\",\n" +
+                "        \"readData\": false,\n" +
+                "        \"h2scripts\": null,\n" +
+                "        \"ddl\": null,\n" +
+                "        \"filters\": [\n" +
+                "            {\n" +
+                "                \"expression\": \"ht_+\",\n" +
+                "                \"target\": \"TABLE\"\n" +
+                "            }\n" +
+                "        ]\n" +
+                "    },\n" +
+                "    \"objectConfiguration\": {\n" +
+                "        \"packageName\": \"org.demis.family\"\n" +
+                "    },\n" +
+                "    \"defaultPackageName\": null,\n" +
+                "    \"projectPath\": \".\",\n" +
+                "    \"templatesPath\": null,\n" +
+                "    \"filesConfiguration\": [\n" +
+                "        {\n" +
+                "            \"fileNameTemplate\": \"{packageName}/{className}.java\",\n" +
+                "            \"templateName\": \"templates/pojo/pojo-class.vm\",\n" +
+                "            \"path\": \"src/main/generated-java\",\n" +
+                "            \"target\": \"table\",\n" +
+                "            \"name\": \"pojo\",\n" +
+                "            \"collision\": {\n" +
+                "                \"manage\": true,\n" +
+                "                \"checkPath\": \"src/main/java\",\n" +
+                "                \"resultPath\": \"src/main/generated-java\",\n" +
+                "                \"filename\": \"{packageName}/{className}Base.java\"\n" +
+                "            }\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}");
         Assert.assertNotNull(configuration);
         Assert.assertNotNull(configuration.getDatabaseConfiguration());
         Assert.assertEquals("jdbc:postgresql://localhost:5432/test", configuration.getDatabaseConfiguration().getUrl());
@@ -54,5 +98,9 @@ public class CodeGeneratorConfigurationTest {
         Assert.assertNotNull(filter);
         Assert.assertEquals(filter.getTarget(), DatabaseFilter.DatabaseFilterTarget.TABLE);
         Assert.assertEquals(filter.getExpression(), "ht_+");
+
+        Assert.assertNotNull(configuration.getFilesConfiguration());
+        Assert.assertNotNull(configuration.getFilesConfiguration().get(0));
+        Assert.assertNotNull(configuration.getFilesConfiguration().get(0).getCollision());
     }
 }
