@@ -116,5 +116,29 @@
             "target":"table",
             "collision":null
         }
+        ,{
+            "name":"service",
+            "fileNameTemplate":"{packageName}/service/{className}Service.java",
+            "templateName":"/templates/service/EntityService.java.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
+        ,{
+            "name":"service-impl",
+            "fileNameTemplate":"{packageName}/service/{className}ServiceImpl.java",
+            "templateName":"/templates/service/EntityServiceImpl.java.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
+        ,{
+            "name":"controller",
+            "fileNameTemplate":"{packageName}/controller/{className}Controller.java",
+            "templateName":"/templates/controller/EntityController.java.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
     ]
 }

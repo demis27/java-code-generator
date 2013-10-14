@@ -6,7 +6,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public abstract class GenericDAOImpl<PK, E> implements GenericDAO<PK, E> {
+
+    private final Logger logger = LoggerFactory.getLogger(GenericDAOImpl.class);
 
     protected Class<E> entityClass;
 
