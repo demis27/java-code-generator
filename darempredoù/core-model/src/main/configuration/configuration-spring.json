@@ -100,5 +100,29 @@
             "target":"table",
             "collision":null
         }
+        ,{
+            "name": "dto-access",
+            "fileNameTemplate": "{packageName}/dto/{className}AccessDTO.java",
+            "templateName": "/templates-spring/dto/EntityAccessDTO.java.st",
+            "path": "src/main/generated-java",
+            "target": "table",
+            "collision": null
+        }
+        ,{
+            "name": "dto",
+            "fileNameTemplate": "{packageName}/dto/{className}DTO.java",
+            "templateName": "/templates-spring/dto/EntityDTO.java.st",
+            "path": "src/main/generated-java",
+            "target": "table",
+            "collision": null
+        }
+        ,{
+            "name": "dto-converter",
+            "fileNameTemplate": "{packageName}/dto/{className}DTOConverter.java",
+            "templateName": "/templates-spring/dto/EntityDTOConverter.java.st",
+            "path": "src/main/generated-java",
+            "target": "table",
+            "collision": null
+        }
     ]
 }
