@@ -1,0 +1,104 @@
+{
+    "databaseConfiguration": {
+        "url": "jdbc:postgresql://localhost:5432/darempredoù",
+        "user": "darempredoù",
+        "password": "darempredoù",
+        "schema": "darempredoù",
+        "readData": false,
+        "filters": [
+            {
+                "expression": "ht_.+",
+                "target": "TABLE"
+            }
+        ],
+        "h2scripts": null,
+        "ddl": null
+    },
+    "objectConfiguration": {
+        "packageName": "org.demis.darempredou"
+    },
+    "projectPath": "",
+    "templatesPath": "/src/main/configuration/",
+    "filesConfiguration": [
+        {
+            "name": "entity",
+            "fileNameTemplate": "{packageName}/domain/{className}.java",
+            "templateName": "/templates-spring/entity/Entity.java.st",
+            "path": "src/main/generated-java",
+            "target": "table",
+            "collision": null
+        }
+        ,{
+            "name": "entity-test",
+            "fileNameTemplate": "{packageName}/domain/{className}Test.java",
+            "templateName": "/templates-spring/entity/EntityTest.java.st",
+            "path": "src/test/generated-java",
+            "target": "table",
+            "collision": null
+        }
+        ,{
+            "name": "identifiable",
+            "fileNameTemplate": "{packageName}/domain/Identifiable.java",
+            "templateName": "/templates-spring/entity/Identifiable.java.st",
+            "path": "src/main/generated-java",
+            "target": "schema",
+            "collision": null
+        }
+        ,{
+            "name": "persistence-unit",
+            "fileNameTemplate": "/META-INF/persistence.xml",
+            "templateName": "/templates-spring/entity/persistence.xml.st",
+            "path": "src/main/generated-resources",
+            "target": "schema",
+            "collision": null
+        }
+        ,{
+            "name": "persistence-test",
+            "fileNameTemplate": "{packageName}/PersistenceTest.java",
+            "templateName": "/templates-spring/entity/PersistenceTest.java.st",
+            "path": "src/test/generated-java",
+            "target": "schema",
+            "collision": null
+        }
+        ,{
+            "name": "persistence-test-util",
+            "fileNameTemplate": "{packageName}/PersistenceTestUtil.java",
+            "templateName": "/templates-spring/entity/PersistenceTestUtil.java.st",
+            "path": "src/test/generated-java",
+            "target": "schema",
+            "collision": null
+        }
+        ,{
+            "name": "entity-persistence-test",
+            "fileNameTemplate": "{packageName}/domain/{className}PersistenceTest.java",
+            "templateName": "/templates-spring/entity/EntityPersistenceTest.java.st",
+            "path": "src/test/generated-java",
+            "target": "table",
+            "collision": null
+        }
+        ,{
+            "name": "repository",
+            "fileNameTemplate": "{packageName}/repository/{className}Repository.java",
+            "templateName": "/templates-spring/repository/EntityRepository.java.st",
+            "path": "src/main/generated-java",
+            "target": "table",
+            "collision": null
+        }
+        ,{
+            "name":"service",
+            "fileNameTemplate":"{packageName}/service/{className}Service.java",
+            "templateName":"/templates-spring/service/EntityService.java.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
+        ,{
+            "name":"service-impl",
+            "fileNameTemplate":"{packageName}/service/{className}ServiceImpl.java",
+            "templateName":"/templates-spring/service/EntityServiceImpl.java.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
+    ]
+}
