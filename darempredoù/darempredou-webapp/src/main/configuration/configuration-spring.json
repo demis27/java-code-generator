@@ -21,19 +21,11 @@
     "templatesPath": "/src/main/configuration/",
     "filesConfiguration": [
         {
-            "name":"controller",
-            "fileNameTemplate":"{packageName}/controller/{className}Controller.java",
-            "templateName":"/templates/controller/EntityController.java.st",
-            "path":"src/main/generated-java",
-            "target":"table",
-            "collision":null
-        }
-        ,{
-            "name": "persistence-unit",
-            "fileNameTemplate": "/META-INF/persistence.xml",
-            "templateName": "/templates/entity/persistence.xml.st",
-            "path": "src/main/generated-resources",
-            "target": "schema",
+            "name": "controller",
+            "fileNameTemplate": "{packageName}/controller/{className}Controller.java",
+            "templateName": "/templates-spring/controller/EntityController.java.st",
+            "path": "src/main/generated-java",
+            "target": "table",
             "collision": null
         }
     ]

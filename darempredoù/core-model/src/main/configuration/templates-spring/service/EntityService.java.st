@@ -8,6 +8,8 @@ public interface $entity.name$Service {
 
     public $entity.name$ get(String primaryKey);
 
+    public $entity.name$ getEager(String primaryKey);
+
     public void save($entity.name$ $entity.nameLowerFirst$);
 
     public void save(final List<$entity.name$> $entity.pluralLowerFirst$);

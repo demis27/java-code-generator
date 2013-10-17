@@ -2,6 +2,13 @@ package $defaultPackageName$.service;
 
 import $defaultPackageName$.domain.$entity.name$;
 import $defaultPackageName$.repository.$entity.name$Repository;
+$if(entity.oneToManyRelations)$
+$entity.oneToManyRelations:{oneToMany|
+$if(oneToMany.simple)$
+import $defaultPackageName$.domain.$oneToMany.associatedEntity.name$;
+$endif$
+}$
+$endif$
 
 import java.util.List;
 
@@ -10,7 +17,9 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -25,6 +34,13 @@ public class $entity.name$ServiceImpl implements $entity.name$Service{
     @Override
     public $entity.name$ get(String primaryKey) {
         return $entity.nameLowerFirst$Repository.findOne(primaryKey);
+    }
+
+    @Transactional
+    @Override
+    public $entity.name$ getEager(String primaryKey) {
+        $entity.name$ $entity.nameLowerFirst$ = $entity.nameLowerFirst$Repository.findByIdEagerly(primaryKey);
+        return $entity.nameLowerFirst$;
     }
 
     @Transactional

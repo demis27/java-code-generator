@@ -101,17 +101,25 @@
             "collision":null
         }
         ,{
-            "name": "dto-access",
-            "fileNameTemplate": "{packageName}/dto/{className}AccessDTO.java",
-            "templateName": "/templates-spring/dto/EntityAccessDTO.java.st",
+            "name": "dto",
+            "fileNameTemplate": "{packageName}/dto/{className}DTO.java",
+            "templateName": "/templates-spring/dto/EntityDTO.java.st",
             "path": "src/main/generated-java",
             "target": "table",
             "collision": null
         }
         ,{
-            "name": "dto",
-            "fileNameTemplate": "{packageName}/dto/{className}DTO.java",
-            "templateName": "/templates-spring/dto/EntityDTO.java.st",
+            "name": "dto-full",
+            "fileNameTemplate": "{packageName}/dto/{className}FullDTO.java",
+            "templateName": "/templates-spring/dto/EntityFullDTO.java.st",
+            "path": "src/main/generated-java",
+            "target": "table",
+            "collision": null
+        }
+        ,{
+            "name": "dto-uri",
+            "fileNameTemplate": "{packageName}/dto/{className}URIDTO.java",
+            "templateName": "/templates-spring/dto/EntityURIDTO.java.st",
             "path": "src/main/generated-java",
             "target": "table",
             "collision": null

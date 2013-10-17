@@ -16,7 +16,6 @@
 
     <modules>
         <module>core-model</module>
-        <module>core-webapp</module>
         <module>darempredou-webapp</module>
     </modules>
     <dependencies>
