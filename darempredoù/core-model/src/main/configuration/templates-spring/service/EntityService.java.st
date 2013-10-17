@@ -10,6 +10,8 @@ public interface $entity.name$Service {
 
     public $entity.name$ getEager(String primaryKey);
 
+    public List<$entity.name$> getPage(int page, int offset);
+
     public void save($entity.name$ $entity.nameLowerFirst$);
 
     public void save(final List<$entity.name$> $entity.pluralLowerFirst$);

@@ -10,10 +10,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +63,7 @@ $if(entity.oneToManyRelations)$
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.oneToManyRelations:{oneToMany|
 $if(oneToMany.simple)$
-    private List<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.pluralLowerFirst$ = new ArrayList<$oneToMany.associatedEntity.name$>();
+    private Set<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.pluralLowerFirst$ = new HashSet<$oneToMany.associatedEntity.name$>();
 $endif$
 }$
 $endif$
@@ -145,11 +147,12 @@ $if(entity.oneToManyRelations)$
 $entity.oneToManyRelations:{oneToMany|
 $if(oneToMany.simple)$
     @OneToMany(mappedBy = "$oneToMany.owner.nameLowerFirst$", orphanRemoval = true, cascade = ALL)
-    public List<$oneToMany.associatedEntity.name$> get$oneToMany.associatedEntity.pluralUpperFirst$() {
+    @Fetch(FetchMode.SUBSELECT)
+    public Set<$oneToMany.associatedEntity.name$> get$oneToMany.associatedEntity.pluralUpperFirst$() {
         return $oneToMany.associatedEntity.pluralLowerFirst$;
     \}
 
-    public void set$oneToMany.associatedEntity.pluralUpperFirst$(List<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.pluralLowerFirst$) {
+    public void set$oneToMany.associatedEntity.pluralUpperFirst$(Set<$oneToMany.associatedEntity.name$> $oneToMany.associatedEntity.pluralLowerFirst$) {
         this.$oneToMany.associatedEntity.pluralLowerFirst$ = $oneToMany.associatedEntity.pluralLowerFirst$;
     \}
 

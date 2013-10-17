@@ -45,6 +45,12 @@ public class $entity.name$ServiceImpl implements $entity.name$Service{
 
     @Transactional
     @Override
+    public List<$entity.name$> getPage(int page, int offset) {
+        $entity.nameLowerFirst$Repository.findAll(new )
+    }
+
+    @Transactional
+    @Override
     public void save($entity.name$ $entity.nameLowerFirst$) {
 
     }
