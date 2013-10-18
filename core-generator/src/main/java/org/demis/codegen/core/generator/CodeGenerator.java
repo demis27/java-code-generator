@@ -17,6 +17,7 @@ import org.demis.codegen.core.mapping.DataBaseToObjectConverter;
 import org.demis.codegen.core.mapping.Mapping;
 import org.demis.codegen.core.object.Entity;
 import org.demis.codegen.core.object.EntityPackage;
+import org.demis.codegen.core.object.OneToMany;
 import org.demis.codegen.core.object.Property;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -219,7 +220,27 @@ public class CodeGenerator {
             Table table = Mapping.getInstance().getTable(entity);
             Mapping.getInstance().addMapping(table, entity);
         }
+
+        processComposition(configuration.getObjectConfiguration().getCompositions(), entityPackage);
+
         return entityPackage;
+    }
+
+    private void processComposition(String[] compositions, EntityPackage entityPackage) {
+        if (compositions == null || compositions.length == 0 || entityPackage == null || entityPackage.getEntities() == null || entityPackage.getEntities().size() == 0) {
+            logger.info("No composition to process: (" + compositions + ") on " + entityPackage);
+            return;
+        }
+        for (Entity entity: entityPackage.getEntities()) {
+            for (OneToMany oneToMany: entity.getOneToManyRelations()) {
+                for (String composition: compositions) {
+                    String foreginKey = entity.getTable().getName() + "." + oneToMany.getForeignKey().getName();
+                    if (composition.equals(foreginKey)) {
+                        oneToMany.setComposition(true);
+                    }
+                }
+            }
+        }
     }
 
     public String parseFileName(CodeGeneratorConfiguration configuration, Entity entity, String templateFileName) {

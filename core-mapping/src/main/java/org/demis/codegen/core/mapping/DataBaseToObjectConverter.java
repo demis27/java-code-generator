@@ -136,8 +136,9 @@ public class DataBaseToObjectConverter {
         }
         // name
         if (reference.getExportedTable() != null) {
-            //oneToMany.setName(toLowerCaseFirst(convertDataBaseName(reference.getName())));
+            oneToMany.setName(NameUtil.toLowerCaseFirst((convertDataBaseName(reference.getName()))));
         }
+        oneToMany.setForeignKey(reference);
 
         Entity entity = Mapping.getInstance().getEntity(reference.getExportedTable());
         entity.addOneToManyRelation(oneToMany);
@@ -165,6 +166,7 @@ public class DataBaseToObjectConverter {
             Column fromColumn = reference.getImportedColumns().iterator().next();
             //manyToOne.setName(toLowerCaseFirst(convertDataBaseName(fromColumn.getName())));
         }
+        manyToOne.setForeignKey(reference);
 
         Entity entity = Mapping.getInstance().getEntity(reference.getImportedTable());
         entity.addManyToOneRelation(manyToOne);

@@ -46,6 +46,8 @@ public class CodeGeneratorTest {
         // object
         ObjectConfiguration objectConfiguration = new ObjectConfiguration();
         objectConfiguration.setPackageName("org.demis.family");
+        String[] compositions = {"compo1", "compo2"};
+        objectConfiguration.setCompositions(compositions);
         configuration.setObjectConfiguration(objectConfiguration);
         // Template
         TemplateConfiguration templateConfiguration = new TemplateConfiguration();

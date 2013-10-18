@@ -16,6 +16,8 @@ public class CodeGeneratorConfigurationTest {
         // object configuration
         ObjectConfiguration objectConfiguration = new ObjectConfiguration();
         objectConfiguration.setPackageName("org.demis.family");
+        String[] compositions = {"compo1", "compo2"};
+        objectConfiguration.setCompositions(compositions);
         configuration.setObjectConfiguration(objectConfiguration);
         // database configuration
         DatabaseConfiguration databaseConfiguration = new DatabaseConfiguration();
@@ -68,7 +70,11 @@ public class CodeGeneratorConfigurationTest {
                 "        ]\n" +
                 "    },\n" +
                 "    \"objectConfiguration\": {\n" +
-                "        \"packageName\": \"org.demis.family\"\n" +
+                "        \"packageName\": \"org.demis.family\",\n" +
+                "        \"compositions\": [\n" +
+                "            \"compo1\",\n" +
+                "            \"compo2\"\n" +
+                "        ]\n" +
                 "    },\n" +
                 "    \"defaultPackageName\": null,\n" +
                 "    \"projectPath\": \".\",\n" +
@@ -102,5 +108,10 @@ public class CodeGeneratorConfigurationTest {
         Assert.assertNotNull(configuration.getFilesConfiguration());
         Assert.assertNotNull(configuration.getFilesConfiguration().get(0));
         Assert.assertNotNull(configuration.getFilesConfiguration().get(0).getCollision());
+
+        Assert.assertNotNull(configuration.getObjectConfiguration());
+        Assert.assertEquals(configuration.getObjectConfiguration().getPackageName(), "org.demis.family");
+        Assert.assertEquals(configuration.getObjectConfiguration().getCompositions().length, 2);
+
     }
 }

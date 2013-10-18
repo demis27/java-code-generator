@@ -4,6 +4,8 @@ public class ObjectConfiguration {
 
     private String packageName;
 
+    private String[] compositions;
+
     public ObjectConfiguration() {
     }
 
@@ -15,5 +17,11 @@ public class ObjectConfiguration {
         this.packageName = packageName;
     }
 
-    
+    public String[] getCompositions() {
+        return compositions;
+    }
+
+    public void setCompositions(String[] compositions) {
+        this.compositions = compositions;
+    }
 }
