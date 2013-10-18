@@ -46,7 +46,7 @@ $endif$
 $if(entity.oneToManyRelations)$
         // one to many attributes methods
 $entity.oneToManyRelations:{oneToMany|
-$if(oneToMany.simple)$
+$if(oneToMany.simple && oneToMany.composition)$
         for ($oneToMany.associatedEntity.name$ $oneToMany.associatedEntity.nameLowerFirst$ : entity.get$oneToMany.associatedEntity.pluralUpperFirst$()) {
             dto.add$oneToMany.associatedEntity.name$($oneToMany.associatedEntity.name$DTOConverter.convertToAccess($oneToMany.associatedEntity.nameLowerFirst$));
         \}

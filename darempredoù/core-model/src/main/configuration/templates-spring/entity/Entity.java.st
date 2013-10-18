@@ -146,8 +146,7 @@ $if(entity.oneToManyRelations)$
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $entity.oneToManyRelations:{oneToMany|
 $if(oneToMany.simple)$
-    @OneToMany(mappedBy = "$oneToMany.owner.nameLowerFirst$", orphanRemoval = true, cascade = ALL)
-    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "$oneToMany.owner.nameLowerFirst$", orphanRemoval = true, cascade = ALL $if(oneToMany.composition)$, fetch=FetchType.EAGER $else$, fetch=FetchType.LAZY $endif$)
     public Set<$oneToMany.associatedEntity.name$> get$oneToMany.associatedEntity.pluralUpperFirst$() {
         return $oneToMany.associatedEntity.pluralLowerFirst$;
     \}
