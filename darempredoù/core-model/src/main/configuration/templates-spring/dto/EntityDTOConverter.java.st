@@ -1,6 +1,7 @@
 package $defaultPackageName$.dto;
 
 import $defaultPackageName$.domain.$entity.name$;
+import $defaultPackageName$.service.$entity.name$Page;
 $if(entity.oneToManyRelations)$
 $entity.oneToManyRelations:{oneToMany|
 $if(oneToMany.simple)$
@@ -8,6 +9,9 @@ import $defaultPackageName$.domain.$oneToMany.associatedEntity.name$;
 $endif$
 }$
 $endif$
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class $entity.name$DTOConverter  {
 
@@ -61,4 +65,22 @@ $endif$
         access.setId(entity.getId());
         return access;
     }
-}
+
+    public static $entity.name$DTOPage convertPage($entity.name$Page entities) {
+        $entity.name$DTOPage dto = new $entity.name$DTOPage();
+        dto.setHasNext(entities.isHasNext());
+        dto.setHasPrevious(entities.isHasPrevious());
+        dto.setNumber(entities.getNumber());
+        dto.setSize(entities.getSize());
+        dto.setTotalElements(entities.getTotalElements());
+        dto.setTotalPage(entities.getTotalPage());
+
+        List<$entity.name$DTO> elements = new ArrayList<$entity.name$DTO>();
+
+        for ($entity.name$ entity: entities.getElements()) {
+            elements.add(convert(entity));
+        }
+        dto.setElements(elements);
+
+        return dto;
+    }}

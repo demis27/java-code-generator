@@ -45,6 +45,18 @@ public class $entity.name$Controller {
         return new ModelAndView(jsonView, "data",$entity.nameLowerFirst$DTO);
     }
 
+    @RequestMapping(value = "/rest/$entity.nameLowerFirst$/", method = RequestMethod.GET)
+    public ModelAndView get$entity.name$Page(@DefaultValue("10") @QueryParam("page") int pageNumber,
+                                               @DefaultValue("0") @QueryParam("offset") int offset) {
+        $entity.name$Page page = null;
+
+        service.getPage(pageNumber, offset);
+
+        $entity.name$DTOPage dtoPage = $entity.name$DTOConverter.convertPage(page);
+
+        return new ModelAndView(jsonView, "data",dtoPage);
+    }
+
     private ModelAndView createErrorResponse(APIError error) {
         return new ModelAndView(jsonView, "error", error);
     }
