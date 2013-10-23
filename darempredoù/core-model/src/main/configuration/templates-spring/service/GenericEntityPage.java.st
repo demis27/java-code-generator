@@ -1,9 +1,9 @@
-package org.demis.darempredou.service;
+package $defaultPackageName$.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntityPage<T> {
+public class GenericEntityPage<T> {
 
     private List<T> elements = new ArrayList<T>();
 
@@ -19,7 +19,7 @@ public class EntityPage<T> {
 
     private boolean hasPrevious;
 
-    public EntityPage() {
+    public GenericEntityPage() {
     }
 
     public List<T> getElements() {

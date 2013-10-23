@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class $entity.name$URIDTO implements $entity.name$DTO {
 
-    private String id;
+    private Integer id;
 
     private String uri;
 
@@ -13,16 +13,16 @@ public class $entity.name$URIDTO implements $entity.name$DTO {
 
     }
 
-    public $entity.name$URIDTO(String id, String uri) {
+    public $entity.name$URIDTO(Integer id, String uri) {
         this.id = id;
         this.uri = uri;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

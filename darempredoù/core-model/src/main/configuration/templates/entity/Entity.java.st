@@ -83,12 +83,12 @@ $entity.id.properties:{property|
     @Column(name = "$property.column.name$", precision = $property.column.size$)
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
-    public String getId() {
+    public $property.javaType$ getId() {
         return $property.name$;
     \}
 
     @Override
-    public void setId(String id) {
+    public void setId($property.javaType$ id) {
         this.$property.name$ = id;
     \}
 

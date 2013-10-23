@@ -15,7 +15,7 @@ $package.entities:{entity|
             <property name="javax.persistence.jdbc.user" value="darempredoù"/>
             <property name="javax.persistence.jdbc.password" value="darempredoù"/>
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.ProgressDialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect" />
         </properties>
     </persistence-unit>
 </persistence>

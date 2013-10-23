@@ -59,11 +59,11 @@ $endif$
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $if(entity.id.simple)$
 $entity.id.properties:{property|
-    public String getId() {
+    public $property.javaType$ getId() {
         return $property.name$;
     \}
 
-    public void setId(String id) {
+    public void setId($property.javaType$ id) {
         this.$property.name$ = id;
     \}
 }$

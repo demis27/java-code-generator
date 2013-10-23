@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface $entity.name$Service {
 
-    public $entity.name$ get(String primaryKey);
+    public $entity.name$ get(Integer primaryKey);
 
-    public $entity.name$ getEager(String primaryKey);
+    public $entity.name$ getEager(Integer primaryKey);
 
     public List<$entity.name$> getPage(int page, int offset);
 

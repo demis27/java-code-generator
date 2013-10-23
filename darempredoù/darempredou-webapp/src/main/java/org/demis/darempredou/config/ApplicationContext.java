@@ -48,7 +48,7 @@ public class ApplicationContext {
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
 
         Properties jpaProterties = new Properties();
-        jpaProterties.put("hibernate.dialect", "org.hibernate.dialect.ProgressDialect");
+        jpaProterties.put("hibernate.dialect", "org.hibernate.dialect.PostgresPlusDialect");
 
         entityManagerFactoryBean.setJpaProperties(jpaProterties);
 

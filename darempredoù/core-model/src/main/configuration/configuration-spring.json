@@ -102,6 +102,22 @@
             "collision":null
         }
         ,{
+            "name":"generic-entity-page",
+            "fileNameTemplate":"{packageName}/service/GenericEntityPage.java",
+            "templateName":"/templates-spring/service/GenericEntityPage.java.st",
+            "path":"src/main/generated-java",
+            "target":"schema",
+            "collision":null
+        }
+        ,{
+            "name":"entity-page",
+            "fileNameTemplate":"{packageName}/service/{className}Page.java",
+            "templateName":"/templates-spring/service/EntityPage.java.st",
+            "path":"src/main/generated-java",
+            "target":"table",
+            "collision":null
+        }
+        ,{
             "name": "dto",
             "fileNameTemplate": "{packageName}/dto/{className}DTO.java",
             "templateName": "/templates-spring/dto/EntityDTO.java.st",

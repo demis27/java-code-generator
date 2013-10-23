@@ -32,13 +32,13 @@ public class $entity.name$ServiceImpl implements $entity.name$Service{
 
     @Transactional
     @Override
-    public $entity.name$ get(String primaryKey) {
+    public $entity.name$ get(Integer primaryKey) {
         return $entity.nameLowerFirst$Repository.findOne(primaryKey);
     }
 
     @Transactional
     @Override
-    public $entity.name$ getEager(String primaryKey) {
+    public $entity.name$ getEager(Integer primaryKey) {
         $entity.name$ $entity.nameLowerFirst$ = $entity.nameLowerFirst$Repository.findByIdEagerly(primaryKey);
         return $entity.nameLowerFirst$;
     }

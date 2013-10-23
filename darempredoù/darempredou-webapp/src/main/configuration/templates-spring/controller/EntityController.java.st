@@ -29,7 +29,7 @@ public class $entity.name$Controller {
     private View jsonView;
 
     @RequestMapping(value = "/rest/$entity.nameLowerFirst$/{id}", method = RequestMethod.GET)
-    public ModelAndView get$entity.name$(@PathVariable("id") String id) {
+    public ModelAndView get$entity.name$(@PathVariable("id") Integer id) {
         $entity.name$ $entity.nameLowerFirst$ = null;
 
         try {

@@ -13,7 +13,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -83,14 +82,14 @@ $entity.id.properties:{property|
     @Override
     @Id
     @Column(name = "$property.column.name$", precision = $property.column.size$)
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-    public String getId() {
+    @SequenceGenerator(name="$entity.name$_sequence",sequenceName="$entity.table.name$_sequence")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="$entity.name$_sequence")
+    public $property.javaType$ getId() {
         return $property.name$;
     \}
 
     @Override
-    public void setId(String id) {
+    public void setId($property.javaType$ id) {
         this.$property.name$ = id;
     \}
 
