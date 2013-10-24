@@ -18,6 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.hibernate.Hibernate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,9 +47,18 @@ public class $entity.name$ServiceImpl implements $entity.name$Service{
 
     @Transactional
     @Override
-    public List<$entity.name$> getPage(int page, int offset) {
-        //$entity.nameLowerFirst$Repository.findAll(new )
-        return null;
+    public $entity.name$Page getPage(int pageNumber, int offset) {
+        Page<$entity.name$> all = $entity.nameLowerFirst$Repository.findAll(new PageRequest(pageNumber, offset));
+        $entity.name$Page page = new $entity.name$Page();
+        page.setSize(all.getSize());
+        page.setTotalElements(all.getTotalElements());
+        page.setHasPrevious(all.hasPreviousPage());
+        page.setTotalPage(all.getTotalPages());
+        page.setNumber(all.getNumber());
+        page.setHasNext(all.hasNextPage());
+        page.setElements(all.getContent());
+
+        return page;
     }
 
     @Transactional

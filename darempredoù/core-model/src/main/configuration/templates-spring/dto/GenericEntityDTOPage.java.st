@@ -11,7 +11,7 @@ public class GenericEntityDTOPage<T> {
 
     private int number;
 
-    private int totalElements;
+    private long totalElements;
 
     private int totalPage;
 
@@ -46,11 +46,11 @@ public class GenericEntityDTOPage<T> {
         this.number = number;
     }
 
-    public int getTotalElements() {
+    public long getTotalElements() {
         return totalElements;
     }
 
-    public void setTotalElements(int totalElements) {
+    public void setTotalElements(long totalElements) {
         this.totalElements = totalElements;
     }
 
