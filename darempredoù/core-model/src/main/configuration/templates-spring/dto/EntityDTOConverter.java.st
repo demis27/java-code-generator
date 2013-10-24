@@ -57,6 +57,8 @@ $if(oneToMany.simple && oneToMany.composition)$
 $endif$
 }$
 $endif$
+        dto.setUri("/rest/$entity.nameLowerFirst$/" + entity.getId() );
+
         return dto;
     }
 
@@ -68,10 +70,10 @@ $endif$
 
     public static $entity.name$DTOPage convertPage($entity.name$Page entities) {
         $entity.name$DTOPage dto = new $entity.name$DTOPage();
-        dto.setHasNext(entities.isHasNext());
-        dto.setHasPrevious(entities.isHasPrevious());
-        dto.setNumber(entities.getNumber());
-        dto.setSize(entities.getSize());
+        dto.hasNext(entities.isHasNext());
+        dto.hasPrevious(entities.isHasPrevious());
+        dto.setPageNumber(entities.getNumber());
+        dto.setPageSize(entities.getSize());
         dto.setTotalElements(entities.getTotalElements());
         dto.setTotalPage(entities.getTotalPage());
 
@@ -81,6 +83,14 @@ $endif$
             elements.add(convert(entity));
         }
         dto.setElements(elements);
+
+        // next and previous uri
+        if (entities.isHasNext()) {
+            dto.setNextUri("/rest/$entity.nameLowerFirst$/?pageNumber=" + (entities.getNumber() + 1) + "&pageSize=" +  entities.getSize());
+        }
+        if (entities.isHasPrevious()) {
+            dto.setPreviousUri("/rest/$entity.nameLowerFirst$/?pageNumber=" + (entities.getNumber() - 1) + "&pageSize=" +  entities.getSize());
+        }
 
         return dto;
     }}

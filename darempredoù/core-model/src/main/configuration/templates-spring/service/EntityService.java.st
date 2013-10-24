@@ -10,7 +10,7 @@ public interface $entity.name$Service {
 
     public $entity.name$ getEager(Integer primaryKey);
 
-    public $entity.name$Page getPage(int page, int offset);
+    public $entity.name$Page getPage(int page, int size);
 
     public void save($entity.name$ $entity.nameLowerFirst$);
 

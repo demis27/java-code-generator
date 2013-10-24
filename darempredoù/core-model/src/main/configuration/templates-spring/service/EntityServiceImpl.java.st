@@ -47,8 +47,8 @@ public class $entity.name$ServiceImpl implements $entity.name$Service{
 
     @Transactional
     @Override
-    public $entity.name$Page getPage(int pageNumber, int offset) {
-        Page<$entity.name$> all = $entity.nameLowerFirst$Repository.findAll(new PageRequest(pageNumber, offset));
+    public $entity.name$Page getPage(int pageNumber, int size) {
+        Page<$entity.name$> all = $entity.nameLowerFirst$Repository.findAll(new PageRequest(pageNumber, size));
         $entity.name$Page page = new $entity.name$Page();
         page.setSize(all.getSize());
         page.setTotalElements(all.getTotalElements());

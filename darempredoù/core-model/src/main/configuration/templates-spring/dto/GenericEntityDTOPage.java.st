@@ -7,9 +7,9 @@ public class GenericEntityDTOPage<T> {
 
     private List<T> elements = new ArrayList<T>();
 
-    private int size;
+    private int pageSize;
 
-    private int number;
+    private int pageNumber;
 
     private long totalElements;
 
@@ -18,6 +18,10 @@ public class GenericEntityDTOPage<T> {
     private boolean hasNext;
 
     private boolean hasPrevious;
+
+    private String nextURI;
+
+    private String previousURI;
 
     public GenericEntityDTOPage() {
     }
@@ -30,20 +34,20 @@ public class GenericEntityDTOPage<T> {
         this.elements = elements;
     }
 
-    public int getSize() {
-        return size;
+    public int getPageSize() {
+        return pageSize;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 
-    public int getNumber() {
-        return number;
+    public int getPageNumber() {
+        return pageNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
     }
 
     public long getTotalElements() {
@@ -62,19 +66,36 @@ public class GenericEntityDTOPage<T> {
         this.totalPage = totalPage;
     }
 
-    public boolean isHasNext() {
+    public boolean hasNext() {
         return hasNext;
     }
 
-    public void setHasNext(boolean hasNext) {
+    public void hasNext(boolean hasNext) {
         this.hasNext = hasNext;
     }
 
-    public boolean isHasPrevious() {
+    public boolean hasPrevious() {
         return hasPrevious;
     }
 
-    public void setHasPrevious(boolean hasPrevious) {
+    public void hasPrevious(boolean hasPrevious) {
         this.hasPrevious = hasPrevious;
     }
+
+    public String getNextUri() {
+        return nextURI;
+    }
+
+    public void setNextUri(String nextURI) {
+        this.nextURI = nextURI;
+    }
+
+    public String getPreviousUri() {
+        return previousURI;
+    }
+
+    public void setPreviousUri(String previousURI) {
+        this.previousURI = previousURI;
+    }
+
 }
