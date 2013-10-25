@@ -64,7 +64,7 @@ public class $entity.name$ServiceImpl implements $entity.name$Service{
     @Transactional
     @Override
     public void save($entity.name$ $entity.nameLowerFirst$) {
-
+        $entity.nameLowerFirst$Repository.save($entity.nameLowerFirst$);
     }
 
     @Transactional
@@ -76,7 +76,7 @@ public class $entity.name$ServiceImpl implements $entity.name$Service{
     @Transactional
     @Override
     public void delete($entity.name$ $entity.nameLowerFirst$) {
-
+        $entity.nameLowerFirst$Repository.delete($entity.nameLowerFirst$);
     }
 
     @Transactional

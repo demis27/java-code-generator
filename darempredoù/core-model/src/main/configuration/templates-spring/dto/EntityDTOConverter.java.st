@@ -93,4 +93,15 @@ $endif$
         }
 
         return dto;
-    }}
+    }
+
+    public static void update$entity.name$($entity.name$FullDTO source, $entity.name$ target) {
+        // raw properties
+$entity.properties:{property|
+$if(!property.id && !property.manyToOne)$
+        target.set$property.nameAsSuffix$(source.get$property.nameAsSuffix$());
+$endif$
+}$
+
+    }
+}
