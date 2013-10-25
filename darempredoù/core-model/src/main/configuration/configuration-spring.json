@@ -117,53 +117,5 @@
             "target":"table",
             "collision":null
         }
-        ,{
-            "name": "dto",
-            "fileNameTemplate": "{packageName}/dto/{className}DTO.java",
-            "templateName": "/templates-spring/dto/EntityDTO.java.st",
-            "path": "src/main/generated-java",
-            "target": "table",
-            "collision": null
-        }
-        ,{
-            "name": "dto-full",
-            "fileNameTemplate": "{packageName}/dto/{className}FullDTO.java",
-            "templateName": "/templates-spring/dto/EntityFullDTO.java.st",
-            "path": "src/main/generated-java",
-            "target": "table",
-            "collision": null
-        }
-        ,{
-            "name": "dto-uri",
-            "fileNameTemplate": "{packageName}/dto/{className}URIDTO.java",
-            "templateName": "/templates-spring/dto/EntityURIDTO.java.st",
-            "path": "src/main/generated-java",
-            "target": "table",
-            "collision": null
-        }
-        ,{
-            "name": "dto-converter",
-            "fileNameTemplate": "{packageName}/dto/{className}DTOConverter.java",
-            "templateName": "/templates-spring/dto/EntityDTOConverter.java.st",
-            "path": "src/main/generated-java",
-            "target": "table",
-            "collision": null
-        }
-        ,{
-            "name": "generic-dto-page",
-            "fileNameTemplate": "{packageName}/dto/GenericEntityDTOPage.java",
-            "templateName": "/templates-spring/dto/GenericEntityDTOPage.java.st",
-            "path": "src/main/generated-java",
-            "target": "schema",
-            "collision": null
-        }
-        ,{
-            "name": "dto-page",
-            "fileNameTemplate": "{packageName}/dto/{className}DTOPage.java",
-            "templateName": "/templates-spring/dto/EntityDTOPage.java.st",
-            "path": "src/main/generated-java",
-            "target": "table",
-            "collision": null
-        }
     ]
 }

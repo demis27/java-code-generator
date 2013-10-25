@@ -112,6 +112,22 @@ public class $entity.name$Controller {
         }
     }
 
+    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseBody
+    public APIError deleteExisting$entity.name$(HttpServletResponse httpResponse) {
+        httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
+        return new APIError("METHOD_NOT_ALLOWED", "Method DELETE on collection #$entity.nameLowerFirst$ is not allowed");
+    }
+
+    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseBody
+    public APIError createExisting$entity.name$(HttpServletResponse httpResponse) {
+        httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
+        return new APIError("METHOD_NOT_ALLOWED", "Method POST on resource #$entity.nameLowerFirst$ is not allowed");
+    }
+
     @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.POST)
     @ResponseBody
     public Object create$entity.name$(@RequestBody $entity.name$FullDTO dto, HttpServletResponse httpResponse) {
@@ -158,9 +174,17 @@ public class $entity.name$Controller {
         }
     }
 
-    @RequestMapping(value = {"/rest/userGroup/{id}", "/rest/userGroup/{id}/"}, method = RequestMethod.HEAD)
+    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$", "/rest/$entity.nameLowerFirst$/"}, method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
-    public Object getUserGroupExist(@PathVariable("id") Integer id, HttpServletResponse httpResponse) {
+    public APIError updateExisting$entity.name$(HttpServletResponse httpResponse) {
+        httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
+        return new APIError("METHOD_NOT_ALLOWED", "Method PUT on collection #$entity.nameLowerFirst$ is not allowed");
+    }
+
+    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.HEAD)
+    @ResponseBody
+    public Object get$entity.name$pExist(@PathVariable("id") Integer id, HttpServletResponse httpResponse) {
          httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
 
          $entity.name$ $entity.nameLowerFirst$ = null;
@@ -203,6 +227,22 @@ public class $entity.name$Controller {
 
          httpResponse.setStatus(HttpStatus.OK.value());
          return null;
+    }
+
+    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.OPTIONS)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public void optionResource(HttpServletResponse httpResponse) {
+        httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
+        httpResponse.setHeader("Allow", "GET,PUT,DELETE,HEAD,OPTIONS");
+    }
+
+    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$", "/rest/$entity.nameLowerFirst$/"}, method = RequestMethod.OPTIONS)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public void optionCollection(HttpServletResponse httpResponse) {
+        httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
+        httpResponse.setHeader("Allow", "GET,POST,HEAD,OPTIONS");
     }
 
     private ModelAndView createErrorResponse(APIError error) {
