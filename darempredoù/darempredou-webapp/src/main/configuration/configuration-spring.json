@@ -15,7 +15,8 @@
         "ddl": null
     },
     "objectConfiguration": {
-        "packageName": "org.demis.darempredou"
+        "packageName": "org.demis.darempredou",
+        "compositions": ["user_group_label.user_group_fk"]
     },
     "projectPath": "",
     "templatesPath": "/src/main/configuration/",

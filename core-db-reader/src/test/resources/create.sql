@@ -90,7 +90,7 @@ CREATE TABLE "Test"."ForeignKeyTable"
   "SimplePrimaryKey" integer, -- a foreign key on primary key table
   CONSTRAINT "ForeingKeyPrimaryKey" PRIMARY KEY ("ForeignKeyPrimaryKey" ), -- The primary key of the table
   CONSTRAINT "SimpleForeignKey" FOREIGN KEY ("SimplePrimaryKey")
-      REFERENCES "Test"."PrimaryTable" ("SimplePrimaryKey") MATCH Unknown
+      REFERENCES "Test"."PrimaryTable" ("SimplePrimaryKey") MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (

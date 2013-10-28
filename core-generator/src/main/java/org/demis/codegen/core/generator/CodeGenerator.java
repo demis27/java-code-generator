@@ -228,19 +228,32 @@ public class CodeGenerator {
 
     private void processComposition(String[] compositions, EntityPackage entityPackage) {
         if (compositions == null || compositions.length == 0 || entityPackage == null || entityPackage.getEntities() == null || entityPackage.getEntities().size() == 0) {
-            logger.info("No composition to process: (" + compositions + ") on " + entityPackage);
+            logger.warn("No composition to process: (" + compositions + ") on " + entityPackage);
             return;
         }
-        for (Entity entity: entityPackage.getEntities()) {
-            for (OneToMany oneToMany: entity.getOneToManyRelations()) {
-                for (String composition: compositions) {
-                    String foreginKey = entity.getTable().getName() + "." + oneToMany.getForeignKey().getName();
-                    if (composition.equals(foreginKey)) {
+        int compositionsFound = 0;
+        for (String composition: compositions) {
+            logger.warn("Try to found composition " + composition);
+            boolean compositionFound = false;
+            for (Entity entity: entityPackage.getEntities()) {
+                for (OneToMany oneToMany: entity.getOneToManyRelations()) {
+                    String foreignKey = oneToMany.getForeignKey().getName();
+                    logger.warn("Try equals on " + foreignKey);
+                    if (composition.equals(foreignKey)) {
                         oneToMany.setComposition(true);
+                        compositionsFound++;
+                        compositionFound = true;
+                        logger.warn("Add composition (" + composition + ") for table (" + entity.getTable() + ") foreign key (" + oneToMany.getForeignKey() + ")");
                     }
+
                 }
             }
+            if (!compositionFound) {
+                logger.warn("No composition " + composition + " found");
+            }
         }
+
+        logger.warn("Found " + compositionsFound + " composition(s)");
     }
 
     public String parseFileName(CodeGeneratorConfiguration configuration, Entity entity, String templateFileName) {
