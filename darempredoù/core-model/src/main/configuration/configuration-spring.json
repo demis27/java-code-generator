@@ -7,8 +7,25 @@
         "readData": false,
         "filters": [
             {
-                "expression": "ht_.+",
-                "target": "TABLE"
+                "expression": "ht_.+|mailserver_protocol",
+                "target": "TABLE",
+                "scope": "GLOBAL",
+                "name": "hibernate tmp",
+                "type": "INCLUDE"
+            },
+            {
+                "expression": "mailserver_protocol",
+                "target": "TABLE",
+                "scope": "LOCALE",
+                "name": "reference table include",
+                "type": "INCLUDE"
+            }
+            ,{
+                "expression": "mailserver_protocol",
+                "target": "TABLE",
+                "scope": "LOCALE",
+                "name": "reference table exclude",
+                "type": "EXCLUDE"
             }
         ],
         "h2scripts": null,
@@ -91,7 +108,7 @@
             "templateName":"/templates-spring/service/EntityService.java.st",
             "path":"src/main/generated-java",
             "target":"table",
-            "collision":null
+            "collision": null
         }
         ,{
             "name":"service-impl",
@@ -99,7 +116,7 @@
             "templateName":"/templates-spring/service/EntityServiceImpl.java.st",
             "path":"src/main/generated-java",
             "target":"table",
-            "collision":null
+            "collision": null
         }
         ,{
             "name":"generic-entity-page",
@@ -107,7 +124,7 @@
             "templateName":"/templates-spring/service/GenericEntityPage.java.st",
             "path":"src/main/generated-java",
             "target":"schema",
-            "collision":null
+            "collision": null
         }
         ,{
             "name":"entity-page",
@@ -115,7 +132,7 @@
             "templateName":"/templates-spring/service/EntityPage.java.st",
             "path":"src/main/generated-java",
             "target":"table",
-            "collision":null
+            "collision": null
         }
     ]
 }

@@ -39,7 +39,7 @@ public class $entity.name$Controller {
     @Autowired
     private View jsonView;
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.GET)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.GET)
     @ResponseBody
     public Object get$entity.name$(@PathVariable("id") Integer id, HttpServletResponse httpResponse) {
         httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
@@ -50,11 +50,11 @@ public class $entity.name$Controller {
             $entity.nameLowerFirst$ = service.getEager(id);
         } catch (Exception e) {
             logger.error("Internal Error", e);
-            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.binaryValue());
             return new APIError("INTERNAL_ERROR", "Internal error");
         }
         if ($entity.nameLowerFirst$ == null) {
-            httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
+            httpResponse.setStatus(HttpStatus.NOT_FOUND.binaryValue());
             return new APIError("RESOURCE_NOT_FOUND", "Resource #$entity.nameLowerFirst$(" + id + ") not found");
         }
         $entity.name$DTO $entity.nameLowerFirst$DTO = $entity.name$DTOConverter.convert($entity.nameLowerFirst$);
@@ -62,10 +62,10 @@ public class $entity.name$Controller {
         return $entity.nameLowerFirst$DTO;
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.GET)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.GET)
     @ResponseBody
-    public Object get$entity.name$Page(@RequestParam(value="pageNumber", defaultValue="0") Integer pageNumber,
-                                             @RequestParam(value="pageSize", defaultValue="10") Integer pageSize,
+    public Object get$entity.name$Page(@RequestParam(binaryValue="pageNumber", defaultValue="0") Integer pageNumber,
+                                             @RequestParam(binaryValue="pageSize", defaultValue="10") Integer pageSize,
                                              HttpServletResponse httpResponse) {
         httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
 
@@ -75,19 +75,19 @@ public class $entity.name$Controller {
             page = service.getPage(pageNumber.intValue(), pageSize.intValue());
         } catch (Exception e) {
             logger.error("Internal Error", e);
-            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.binaryValue());
             return new APIError("INTERNAL_ERROR", "Internal error");
         }
         if (page == null) {
-            httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
+            httpResponse.setStatus(HttpStatus.NOT_FOUND.binaryValue());
             return new APIError("RESOURCE_NOT_FOUND", "Resources #$entity.nameLowerFirst$(" + pageNumber + ", " + pageSize + ") not found");
         }
 
-         httpResponse.setStatus(HttpStatus.OK.value());
+         httpResponse.setStatus(HttpStatus.OK.binaryValue());
          return $entity.name$DTOConverter.convertPage(page);
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.DELETE)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.DELETE)
     @ResponseBody
     public Object delete$entity.name$(@PathVariable("id") Integer id, HttpServletResponse httpResponse) {
         httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
@@ -97,22 +97,22 @@ public class $entity.name$Controller {
         try {
             $entity.nameLowerFirst$ = service.getEager(id);
             if ($entity.nameLowerFirst$ == null) {
-                httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
+                httpResponse.setStatus(HttpStatus.NOT_FOUND.binaryValue());
                 return new APIError("RESOURCE_NOT_FOUND", "Resource #$entity.nameLowerFirst$(" + id + ") not found");
             }
             else {
                 service.delete($entity.nameLowerFirst$);
-                httpResponse.setStatus(HttpStatus.OK.value());
+                httpResponse.setStatus(HttpStatus.OK.binaryValue());
                 return null;
             }
         } catch (Exception e) {
             logger.error("Internal Error", e);
-            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.binaryValue());
             return new APIError("INTERNAL_ERROR", "Internal error");
         }
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.DELETE)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
     public APIError deleteExisting$entity.name$(HttpServletResponse httpResponse) {
@@ -120,7 +120,7 @@ public class $entity.name$Controller {
         return new APIError("METHOD_NOT_ALLOWED", "Method DELETE on collection #$entity.nameLowerFirst$ is not allowed");
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.POST)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
     public APIError createExisting$entity.name$(HttpServletResponse httpResponse) {
@@ -128,7 +128,7 @@ public class $entity.name$Controller {
         return new APIError("METHOD_NOT_ALLOWED", "Method POST on resource #$entity.nameLowerFirst$ is not allowed");
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.POST)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.POST)
     @ResponseBody
     public Object create$entity.name$(@RequestBody $entity.name$FullDTO dto, HttpServletResponse httpResponse) {
         httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
@@ -136,18 +136,18 @@ public class $entity.name$Controller {
         try {
             $entity.name$ $entity.nameLowerFirst$ = $entity.name$DTOConverter.convert(dto);
             service.save($entity.nameLowerFirst$);
-            httpResponse.setStatus(HttpStatus.OK.value());
+            httpResponse.setStatus(HttpStatus.OK.binaryValue());
             $entity.name$DTO $entity.nameLowerFirst$DTO = $entity.name$DTOConverter.convert($entity.nameLowerFirst$);
             return $entity.nameLowerFirst$DTO;
         }
         catch (Exception e) {
             logger.error("Internal Error", e);
-            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.binaryValue());
             return createErrorResponse(new APIError("INTERNAL_ERROR", "Internal error"));
         }
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.PUT)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.PUT)
     @ResponseBody
     public Object update$entity.name$(@PathVariable("id") Integer id, @RequestBody $entity.name$FullDTO dto, HttpServletResponse httpResponse) {
         httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
@@ -159,22 +159,22 @@ public class $entity.name$Controller {
             if ($entity.nameLowerFirst$ != null) {
                 $entity.name$DTOConverter.update$entity.name$(dto, $entity.nameLowerFirst$);
                 service.save($entity.nameLowerFirst$);
-                httpResponse.setStatus(HttpStatus.OK.value());
+                httpResponse.setStatus(HttpStatus.OK.binaryValue());
                 return $entity.name$DTOConverter.convert($entity.nameLowerFirst$);
             }
             else {
-                httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
+                httpResponse.setStatus(HttpStatus.NOT_FOUND.binaryValue());
                 return new APIError("RESOURCE_NOT_FOUND", "Resource #$entity.nameLowerFirst$(" + id + ") not found");
             }
         }
         catch (Exception e) {
             logger.error("Internal Error", e);
-            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.binaryValue());
             return createErrorResponse(new APIError("INTERNAL_ERROR", "Internal error"));
         }
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$", "/rest/$entity.nameLowerFirst$/"}, method = RequestMethod.PUT)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$", "/rest/$entity.nameLowerFirst$/"}, method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
     public APIError updateExisting$entity.name$(HttpServletResponse httpResponse) {
@@ -182,7 +182,7 @@ public class $entity.name$Controller {
         return new APIError("METHOD_NOT_ALLOWED", "Method PUT on collection #$entity.nameLowerFirst$ is not allowed");
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.HEAD)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.HEAD)
     @ResponseBody
     public Object get$entity.name$pExist(@PathVariable("id") Integer id, HttpServletResponse httpResponse) {
          httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
@@ -193,21 +193,21 @@ public class $entity.name$Controller {
              $entity.nameLowerFirst$ = service.getEager(id);
          } catch (Exception e) {
              logger.error("Internal Error", e);
-             httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+             httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.binaryValue());
              return new APIError("INTERNAL_ERROR", "Internal error");
          }
          if ($entity.nameLowerFirst$ == null) {
-             httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
+             httpResponse.setStatus(HttpStatus.NOT_FOUND.binaryValue());
              return new APIError("RESOURCE_NOT_FOUND", "Resource #$entity.nameLowerFirst$(" + id + ") not found");
          }
 
          return null;
    }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.HEAD)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/", "/rest/$entity.nameLowerFirst$"}, method = RequestMethod.HEAD)
     @ResponseBody
-    public Object get$entity.name$PageExist(@RequestParam(value="pageNumber", defaultValue="0") Integer pageNumber,
-                                             @RequestParam(value="pageSize", defaultValue="10") Integer pageSize,
+    public Object get$entity.name$PageExist(@RequestParam(binaryValue="pageNumber", defaultValue="0") Integer pageNumber,
+                                             @RequestParam(binaryValue="pageSize", defaultValue="10") Integer pageSize,
                                              HttpServletResponse httpResponse) {
         httpResponse.setHeader("Content-Type", "application/json;charset=UTF-8");
 
@@ -217,19 +217,19 @@ public class $entity.name$Controller {
             page = service.getPage(pageNumber.intValue(), pageSize.intValue());
         } catch (Exception e) {
             logger.error("Internal Error", e);
-            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.binaryValue());
             return new APIError("INTERNAL_ERROR", "Internal error");
         }
         if (page == null) {
-            httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
+            httpResponse.setStatus(HttpStatus.NOT_FOUND.binaryValue());
             return new APIError("RESOURCE_NOT_FOUND", "Resources #$entity.nameLowerFirst$(" + pageNumber + ", " + pageSize + ") not found");
         }
 
-         httpResponse.setStatus(HttpStatus.OK.value());
+         httpResponse.setStatus(HttpStatus.OK.binaryValue());
          return null;
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.OPTIONS)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$/{id}", "/rest/$entity.nameLowerFirst$/{id}/"}, method = RequestMethod.OPTIONS)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public void optionResource(HttpServletResponse httpResponse) {
@@ -237,7 +237,7 @@ public class $entity.name$Controller {
         httpResponse.setHeader("Allow", "GET,PUT,DELETE,HEAD,OPTIONS");
     }
 
-    @RequestMapping(value = {"/rest/$entity.nameLowerFirst$", "/rest/$entity.nameLowerFirst$/"}, method = RequestMethod.OPTIONS)
+    @RequestMapping(binaryValue = {"/rest/$entity.nameLowerFirst$", "/rest/$entity.nameLowerFirst$/"}, method = RequestMethod.OPTIONS)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public void optionCollection(HttpServletResponse httpResponse) {

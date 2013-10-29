@@ -18,8 +18,8 @@ public class DatabaseFilter extends Filter {
 
     }
 
-    public DatabaseFilter(String expression, DatabaseFilterTarget target) {
-        super(expression);
+    public DatabaseFilter(String name, String expression, DatabaseFilterTarget target) {
+        super(name, expression);
         this.target = target;
     }
 

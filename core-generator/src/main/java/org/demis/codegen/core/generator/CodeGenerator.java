@@ -13,6 +13,7 @@ import java.util.*;
 
 import org.demis.codegen.core.db.Schema;
 import org.demis.codegen.core.generator.configuration.filter.DatabaseFilter;
+import org.demis.codegen.core.generator.configuration.filter.Filter;
 import org.demis.codegen.core.mapping.DataBaseToObjectConverter;
 import org.demis.codegen.core.mapping.Mapping;
 import org.demis.codegen.core.object.Entity;
@@ -84,7 +85,19 @@ public class CodeGenerator {
                     boolean filtered = false;
                     if (configuration.getDatabaseConfiguration().getFilters() != null && configuration.getDatabaseConfiguration().getFilters().size() != 0) {
                         for (DatabaseFilter filter: configuration.getDatabaseConfiguration().getFilters()) {
-                            filtered = filtered || (filter.match(table.getName()) && (filter.getTarget() == DatabaseFilter.DatabaseFilterTarget.TABLE));
+                            // global filter
+                            filtered = filtered ||
+                                    (filter.getScope() == Filter.FilterScope.GLOBAL
+                                            && (filter.getTarget() == DatabaseFilter.DatabaseFilterTarget.TABLE)
+                                            && (filter.match(table.getName()) ^ filter.getType() == Filter.FilterType.EXCLUDE));
+                            // Locale filter
+                            if (filter.getScope() == Filter.FilterScope.LOCALE && templateConfiguration.getUsedFilters() != null) {
+                                for (String usedFilter: templateConfiguration.getUsedFilters()) {
+                                    filtered = filtered ||
+                                            (usedFilter.equals(filter.getName())
+                                                    && (filter.match(table.getName()) ^ filter.getType() == Filter.FilterType.EXCLUDE));
+                                }
+                            }
                         }
                     }
                     if (!filtered) {

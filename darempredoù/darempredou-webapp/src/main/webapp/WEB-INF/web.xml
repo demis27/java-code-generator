@@ -13,9 +13,9 @@
     -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>
+        <param-binaryValue>
             /WEB-INF/spring/application-context.xml
-        </param-value>
+        </param-binaryValue>
     </context-param>
 
     <!--
@@ -27,7 +27,7 @@
 
     <!--
         Define the Spring Dispatcher Servlet for the REST services.
-        The 'contextConfiguration' param with an empty value means that the
+        The 'contextConfiguration' param with an empty binaryValue means that the
         Spring Context won't try to load a default file called restservices-servlet.xml
      -->
     <servlet>
@@ -35,7 +35,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value></param-value>
+            <param-binaryValue></param-binaryValue>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

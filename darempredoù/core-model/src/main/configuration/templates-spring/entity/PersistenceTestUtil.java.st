@@ -15,4 +15,12 @@ public class PersistenceTestUtil {
            return builder.toString();
        }
    }
+
+    public static Integer generateRandomInteger(int size) {
+        int result = (int)(Math.random()*10);
+        for (int i = 0; i < size; i++) {
+            result = result * 10 + (int)(Math.random()*10);
+        }
+        return new Integer(result);
+    }
 }

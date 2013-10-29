@@ -8,7 +8,7 @@ public class DatabaseFilterTest {
 
     @Test
     public void match() {
-        DatabaseFilter filter = new DatabaseFilter("ht_.+", DatabaseFilter.DatabaseFilterTarget.TABLE);
+        DatabaseFilter filter = new DatabaseFilter("hibernate temp", "ht_.+", DatabaseFilter.DatabaseFilterTarget.TABLE);
         Assert.assertTrue(filter.match("ht_filtered"));
     }
 }

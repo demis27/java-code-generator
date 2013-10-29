@@ -73,3 +73,41 @@ create table darempredoù.etablishment (
 ) ;
 
 
+-- Message / Mail
+
+create table darempredoù.mailserver_protocol (
+    protocol_id                 integer not null,
+    "name"                      character varying(8) not null,
+	constraint mailserver_protocol_pkey primary key (protocol_id)
+);
+
+insert into darempredoù.mailserver_protocol values (1, 'POP3');
+insert into darempredoù.mailserver_protocol values (2, 'POP3S');
+insert into darempredoù.mailserver_protocol values (3, 'IMAP4');
+insert into darempredoù.mailserver_protocol values (4, 'IMAP4S');
+
+create sequence darempredoù.mail_server_sequence;
+create table darempredoù.mail_server (
+	mail_server_id 		        integer default nextval ('darempredoù.mail_server_sequence') not null,
+	creation_date       		timestamp without time zone default current_date,
+	modification_date   		timestamp without time zone default current_date,
+	"name" 				        character varying(256) not null,
+    protocol_id                 integer not null,
+    host                        character varying(256) not null,
+    port                        integer not null,
+	constraint mail_server_pkey primary key (mail_server_id)
+--	,constraint mailserver_protocol foreign key (protocol_id) references darempredoù.mailserver_protocol (protocol_id)
+);
+
+create sequence darempredoù.mailbox_sequence;
+create table darempredoù.mailbox (
+	mailbox_id 		            integer default nextval ('darempredoù.mailbox_sequence') not null,
+	creation_date       		timestamp without time zone default current_date,
+	modification_date   		timestamp without time zone default current_date,
+	"name" 				        character varying(256) not null,
+    login                       character varying(64) not null,
+    password                    character varying(64) not null,
+    email_address               character varying(256) not null,
+	constraint mailbox_pkey primary key (mailbox_id)
+--	,constraint mailserver_protocol foreign key (protocol_id) references darempredoù.mailserver_protocol (protocol_id)
+);

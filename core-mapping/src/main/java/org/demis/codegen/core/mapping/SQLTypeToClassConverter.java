@@ -23,23 +23,23 @@ public class SQLTypeToClassConverter {
                 break;
 
             case Types.BIGINT:
-                javaType = "java.lang.Long";
+                javaType = "Long";
                 break;
             case Types.BINARY:
                 javaType = "byte[]";
                 break;
             case Types.BIT:
-                javaType = "java.lang.Boolean";
+                javaType = "Boolean";
                 break;
             case Types.BLOB:
                 javaType = "unknown-BLOB";
                 break;
             case Types.BOOLEAN:
-                javaType = "java.lang.Boolean";
+                javaType = "Boolean";
                 break;
 
             case Types.CHAR:
-                javaType = "java.lang.String";
+                javaType = "String";
                 break;
             case Types.CLOB:
                 javaType = "unknown-CLOB";
@@ -52,21 +52,21 @@ public class SQLTypeToClassConverter {
                 javaType = "java.sql.Date";
                 break;
             case Types.DECIMAL:
-                javaType = "java.lang.Double";
+                javaType = "Double";
                 break;
             case Types.DISTINCT:
                 javaType = "unknown-DISTINCT";
                 break;
             case Types.DOUBLE:
-                javaType = "java.lang.Double";
+                javaType = "Double";
                 break;
 
             case Types.FLOAT:
-                javaType = "java.lang.Double";
+                javaType = "Double";
                 break;
 
             case Types.INTEGER:
-                javaType = "java.lang.Integer";
+                javaType = "Integer";
                 break;
 
             case Types.JAVA_OBJECT:
@@ -80,24 +80,24 @@ public class SQLTypeToClassConverter {
                 javaType = "unknown-LONGVARBINARY";
                 break;
             case Types.LONGVARCHAR:
-                javaType = "java.lang.String";
+                javaType = "String";
                 break;
 
             case Types.NCHAR:
-                javaType = "java.lang.String";
+                javaType = "String";
                 break;
             case Types.NCLOB:
                 javaType = "unknown-NCLOB";
                 break;
             case Types.NUMERIC:
-                javaType = "java.lang.Double";
+                javaType = "Double";
                 break;
             case Types.NVARCHAR:
-                javaType = "java.lang.String";
+                javaType = "String";
                 break;
 
             case Types.REAL:
-                javaType = "java.lang.Float";
+                javaType = "Float";
                 break;
             case Types.REF:
                 javaType = "unknown-REF";
@@ -107,7 +107,7 @@ public class SQLTypeToClassConverter {
                 break;
 
             case Types.SMALLINT:
-                javaType = "java.lang.Short";
+                javaType = "Short";
                 break;
             case Types.SQLXML:
                 javaType = "unknown-SQLXML";
@@ -123,14 +123,14 @@ public class SQLTypeToClassConverter {
                 javaType = "java.sql.Timestamp";
                 break;
             case Types.TINYINT:
-                javaType = "java.lang.Byte";
+                javaType = "Byte";
                 break;
 
             case Types.VARBINARY:
                 javaType = "unknown-VARBINARY";
                 break;
             case Types.VARCHAR:
-                javaType = "java.lang.String";
+                javaType = "String";
                 break;
         }
 

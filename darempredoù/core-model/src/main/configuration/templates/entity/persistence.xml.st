@@ -10,12 +10,12 @@ $package.entities:{entity|
 }$
 
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/darempredoù"/>
-            <property name="javax.persistence.jdbc.user" value="darempredoù"/>
-            <property name="javax.persistence.jdbc.password" value="darempredoù"/>
+            <property name="javax.persistence.jdbc.driver" binaryValue="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" binaryValue="jdbc:postgresql://localhost:5432/darempredoù"/>
+            <property name="javax.persistence.jdbc.user" binaryValue="darempredoù"/>
+            <property name="javax.persistence.jdbc.password" binaryValue="darempredoù"/>
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.ProgressDialect" />
+            <property name="hibernate.dialect" binaryValue="org.hibernate.dialect.ProgressDialect" />
         </properties>
     </persistence-unit>
 </persistence>

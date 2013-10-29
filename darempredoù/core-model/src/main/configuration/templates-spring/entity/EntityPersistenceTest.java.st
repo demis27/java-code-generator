@@ -35,7 +35,7 @@ public class $entity.name$PersistenceTest {
         $entity.name$ $entity.nameLowerFirst$ = new $entity.name$();
 $entity.properties:{property|
 $if(!property.id && !property.manyToOne && !property.column.nullable)$
-        $entity.nameLowerFirst$.set$property.nameAsSuffix$(PersistenceTestUtil.generateRandomString($property.column.size$));
+        $entity.nameLowerFirst$.set$property.nameAsSuffix$(PersistenceTestUtil.generateRandom$property.javaType$($property.column.size$));
 $endif$
 }$
 $entity.manyToOneRelations:{manyToOne|

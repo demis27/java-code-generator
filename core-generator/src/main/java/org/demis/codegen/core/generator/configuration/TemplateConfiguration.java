@@ -1,7 +1,5 @@
 package org.demis.codegen.core.generator.configuration;
 
-import java.util.List;
-
 public class TemplateConfiguration {
 
     private String fileNameTemplate;
@@ -15,6 +13,8 @@ public class TemplateConfiguration {
     private String name;
 
     private CollisionTemplateConfiguration collision;
+
+    private String[] usedFilters;
 
     public TemplateConfiguration() {
     }
@@ -65,5 +65,13 @@ public class TemplateConfiguration {
 
     public void setCollision(CollisionTemplateConfiguration collision) {
         this.collision = collision;
+    }
+
+    public String[] getUsedFilters() {
+        return usedFilters;
+    }
+
+    public void setUsedFilters(String[] usedFilters) {
+        this.usedFilters = usedFilters;
     }
 }

@@ -16,6 +16,7 @@
 
     <modules>
         <module>core-model</module>
+        <module>core-message</module>
         <module>darempredou-webapp</module>
     </modules>
     <dependencies>

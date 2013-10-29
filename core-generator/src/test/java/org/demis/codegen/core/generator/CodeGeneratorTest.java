@@ -40,7 +40,7 @@ public class CodeGeneratorTest {
         databaseConfiguration.setPassword("test");
         configuration.setDatabaseConfiguration(databaseConfiguration);
         // Database filter
-        DatabaseFilter filter = new DatabaseFilter("ht_+", DatabaseFilter.DatabaseFilterTarget.TABLE);
+        DatabaseFilter filter = new DatabaseFilter("hibernate tmp", "ht_+", DatabaseFilter.DatabaseFilterTarget.TABLE);
         databaseConfiguration.addFilter(filter);
 
         // object

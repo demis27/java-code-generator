@@ -94,16 +94,12 @@ public class DataBaseToObjectConverter {
 
     public Id convertPrimaryKey(PrimaryKey primaryKey) {
         Id id = new Id();
-        // ident name
-        String name = null;
-        String className = null;
+        String name;
         if (primaryKey.nbColumn() > 1) {
             name = convertDataBaseName(primaryKey.getTable().getName()) + "PrimaryKey";
-            className = name;
         }
         else {
             name = convertDataBaseName(primaryKey.getColumnAs(1).getName(), false);
-            className = Mapping.getInstance().getProperty(primaryKey.getColumnAs(1)).getJavaType();
         }
 
         name = NameUtil.toLowerCaseFirst(name);
