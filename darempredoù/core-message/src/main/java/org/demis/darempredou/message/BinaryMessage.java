@@ -1,16 +1,38 @@
 package org.demis.darempredou.message;
 
-public interface BinaryMessage {
+public class BinaryMessage {
 
-    public byte[] getBinaryContent();
+    private int id = 0;
 
-    public int getId();
+    private byte[] binaryContent = null;
 
-    public long getReceivedTime();
+    private long receivedTime = 0;
 
-    public void setBinaryContent(byte[] binaryContent);
+    public BinaryMessage() {
+        // no op
+    }
 
-    public void setId(int id);
+    public byte[] getBinaryContent() {
+        return binaryContent;
+    }
 
-    public void setReceivedTime(long receivedTime);
+    public void setBinaryContent(byte[] binaryContent) {
+        this.binaryContent = binaryContent;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public long getReceivedTime() {
+        return receivedTime;
+    }
+
+    public void setReceivedTime(long receivedTime) {
+        this.receivedTime = receivedTime;
+    }
 }

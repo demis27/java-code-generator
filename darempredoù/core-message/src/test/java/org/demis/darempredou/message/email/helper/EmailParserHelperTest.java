@@ -1,6 +1,7 @@
 package org.demis.darempredou.message.email.helper;
 
 import org.demis.darempredou.message.email.EmailHeader;
+import org.demis.darempredou.message.email.EmailPart;
 import org.demis.darempredou.message.email.EmailRecipient;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -79,5 +80,66 @@ public class EmailParserHelperTest {
             Assert.assertEquals(tos[i + 1], recipient.getEmail());
             Assert.assertNull(recipient.getName());
         }
+    }
+
+    @Test
+    public void decodeNonASCIIHeaderValue() {
+        String[] subjects = {"[Sofinco] : Erreur lors d'une suppression de =?UTF-8?Q?requ=C3=AAte=20dan?==?UTF-8?Q?s=20les=20requ=C3=AAtes=20archiv=C3=A9es?=",
+                "[Sofinco] : Erreur lors d'une suppression de requête dans les requêtes archivées",
+                "=?iso-8859-1?Q?=5BDecathlon=5D_Notification_par_email_du_transfert_d'une_?==?iso-8859-1?Q?requ=EAte_d'un_agent_=E0_un_autre_agent?=",
+                "[Decathlon] Notification par email du transfert d'une requête d'un agent à un autre agent"};
+        for (int i = 0; i < subjects.length; i+= 2) {
+            Assert.assertEquals(subjects[i + 1], EmailParserHelper.decodeAllNonASCIIHeaderValue(subjects[i]));
+        }
+    }
+
+    @Test
+    public void detectBoundaryBegin() {
+        // main boundary
+        EmailPart part = new EmailPart();
+        String boundary = "_mixed 0052010DC1257619_";
+        part.setBoundary(boundary);
+
+        Assert.assertTrue(EmailParserHelper.detectBoundaryBegin(part, "--=" + boundary + "="));
+
+        // parent boundary
+        part = new EmailPart();
+        EmailPart parent = new EmailPart();
+        part.setParent(parent);
+        boundary = "_mixed 0052010DC1257619_";
+        parent.setBoundary(boundary);
+
+        Assert.assertTrue(EmailParserHelper.detectBoundaryBegin(part, "--=" + boundary + "="));
+    }
+
+    @Test
+    public void detectBoundaryEnd() {
+        // main boundary
+        EmailPart part = new EmailPart();
+        String boundary = "_mixed 0052010DC1257619_";
+        part.setBoundary(boundary);
+
+        Assert.assertTrue(EmailParserHelper.detectBoundaryEnd(part, "--=" + boundary + "=--"));
+
+        // parent boundary
+        part = new EmailPart();
+        EmailPart parent = new EmailPart();
+        part.setParent(parent);
+        boundary = "_mixed 0052010DC1257619_";
+        parent.setBoundary(boundary);
+
+        Assert.assertTrue(EmailParserHelper.detectBoundaryEnd(part, "--=" + boundary + "=--"));
+    }
+
+    @Test
+    public void extractBoundary() {
+        String boundary = "_mixed 0052010DC1257619_";
+        // type: boundary=<boundary number>
+        Assert.assertEquals(EmailParserHelper.extractBoundary(" boundary=\"" + boundary + "=\""), boundary);
+        // type: --<boundary number>
+        Assert.assertEquals(EmailParserHelper.extractBoundary(" --" + boundary), boundary);
+        // type: --<boundary number>--
+        Assert.assertEquals(EmailParserHelper.extractBoundary(" --" + boundary + "--"), boundary);
+
     }
 }

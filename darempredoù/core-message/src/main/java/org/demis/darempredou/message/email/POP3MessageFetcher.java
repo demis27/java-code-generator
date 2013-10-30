@@ -132,7 +132,7 @@ public class POP3MessageFetcher extends EmailMessageFetcher {
                     }
                     reader.close();
                     output.close();
-                    BinaryMessage messageResult = new BinaryMessageImpl();
+                    BinaryMessage messageResult = new BinaryMessage();
                     messageResult.setBinaryContent(output.toByteArray());
                     Calendar calendar = Calendar.getInstance();
                     messageResult.setReceivedTime(calendar.getTimeInMillis());

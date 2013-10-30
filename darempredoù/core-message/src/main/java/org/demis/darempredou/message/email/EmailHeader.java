@@ -45,4 +45,13 @@ public class EmailHeader {
     public void setValue(String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "EmailHeader{" +
+                "name='" + name + '\'' +
+                ", binaryValue='" + binaryValue + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }
