@@ -1,0 +1,77 @@
+Return-Path: <demis27@gmail.com>
+Delivered-To: dwarf-test-extern@demis27.net
+Received: from spool.mail.gandi.net (mspool3-v.mgt.gandi.net [10.0.21.73])
+	by mboxes1-d.mgt.gandi.net (Postfix) with ESMTP id 011A04273
+	for <dwarf-test-extern@demis27.net>; Thu,  7 May 2009 13:04:44 +0200 (CEST)
+Received: from localhost (mfilter4-d.gandi.net [217.70.178.45])
+	by spool.mail.gandi.net (Postfix) with ESMTP id BA5391B4097
+	for <dwarf-test-extern@demis27.net>; Thu,  7 May 2009 13:04:44 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at mfilter4-d.mgt.gandi.net
+Received: from spool.mail.gandi.net ([10.0.21.73])
+	by localhost (mfilter4-d.mgt.gandi.net [217.70.178.45]) (amavisd-new, port 10024)
+	with ESMTP id ONsaYHSaIGCM for <dwarf-test-extern@demis27.net>;
+	Thu,  7 May 2009 13:04:42 +0200 (CEST)
+Received: from mail-bw0-f224.google.com (mail-bw0-f224.google.com [209.85.218.224])
+	by spool.mail.gandi.net (Postfix) with ESMTP id 0BE581B40A4
+	for <dwarf-test-extern@demis27.net>; Thu,  7 May 2009 13:04:38 +0200 (CEST)
+Received: by bwz24 with SMTP id 24so737554bwz.22
+        for <dwarf-test-extern@demis27.net>; Thu, 07 May 2009 04:04:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:received:reply-to:date:message-id
+         :subject:from:to:content-type;
+        bh=EEF81mUFGeNVMBxKdN2fm5UYT1wIV9dZQMCYTysuW/U=;
+        b=dcmWH96vbFvTvQ6fotC3YWOJ6OzGPAt6vU77p0fxDioUWgxEsadiHSP5+ipb6tMkqp
+         bCoEpUH0yvRaEkWpVMl8GotpF9su3X1kKbqonBcCjj9bwP9pDpAxZB/IsfYWO0II1E6Y
+         rwMOq468X9DKLdW/2Sdn/K4YisA+PJ99oqig0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:reply-to:date:message-id:subject:from:to:content-type;
+        b=S483nogvQhSf0SiwYOuf//qu78PEZBBal6fBFoQpxzYy3sLvaZ8MwAJtABl/HV8hvW
+         MThscLU2e7Yvqoz0jrJKCCdxpeaYmaHWfbYWfw4M6E32Wq+ERWHiRQr13cs3a50tdAJP
+         0Xxg2ymELA2JfG3UODW00HZyQxlkSNDA/cG58=
+MIME-Version: 1.0
+Received: by 10.204.65.65 with SMTP id h1mr2298672bki.26.1241694278192; Thu, 
+	07 May 2009 04:04:38 -0700 (PDT)
+Reply-To: demis27@demis27.net
+Date: Thu, 7 May 2009 13:04:38 +0200
+Message-ID: <c3327f2c0905070404y482be9c4n2069d75a25a6c21e@mail.gmail.com>
+Subject: test piece jointe text
+From: =?UTF-8?Q?St=C3=A9phane_Kermabon?= <demis27@gmail.com>
+To: dwarf-test-extern@demis27.net
+Content-Type: multipart/mixed; boundary=001636c5ad4d5f152e0469507aa9
+
+--001636c5ad4d5f152e0469507aa9
+Content-Type: multipart/alternative; boundary=001636c5ad4d5f151d0469507aa7
+
+--001636c5ad4d5f151d0469507aa7
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+--=20
+Avant d'imprimer cet email, r=C3=A9fl=C3=A9chissez =C3=A0 l'impact sur l'en=
+vironnement,
+merci
+
+Kermabon D=C3=A9mis St=C3=A9phane
+demis27@demis27.net
+
+--001636c5ad4d5f151d0469507aa7
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<br clear=3D"all"><br>-- <br>Avant d&#39;imprimer cet email, r=C3=A9fl=C3=
+=A9chissez =C3=A0 l&#39;impact sur l&#39;environnement, merci<br><br>Kermab=
+on D=C3=A9mis St=C3=A9phane<br><a href=3D"mailto:demis27@demis27.net">demis=
+27@demis27.net</a><br>
+
+--001636c5ad4d5f151d0469507aa7--
+--001636c5ad4d5f152e0469507aa9
+Content-Type: text/plain; charset=US-ASCII; name="refactor-todo.txt"
+Content-Disposition: attachment; filename="refactor-todo.txt"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_fufcpfe30
+
+TG9nZ2VyLmdldExvZ2dlcgoKY29tLmVwdGljYS5NV0MuZGF0YWJhc2Uuc3RhdC5SZXFDYXRlZ29y
+eVN0YXRRdWVyeVBlcltYWFhdCgo=
+--001636c5ad4d5f152e0469507aa9--

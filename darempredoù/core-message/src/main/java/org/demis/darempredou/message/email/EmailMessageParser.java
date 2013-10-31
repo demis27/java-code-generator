@@ -28,8 +28,8 @@ public class EmailMessageParser implements MessageParser {
 
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(message.getBinaryContent());
         BufferedReader reader = new BufferedReader(new InputStreamReader(byteArrayInputStream));
-        String line = null;
-        EmailPart currentPart = null;
+        String line;
+        EmailPart currentPart;
         EmailPart topPart = new EmailPart();
         boolean readHeader = false;
         boolean readContent = false;

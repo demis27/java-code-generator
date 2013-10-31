@@ -1,0 +1,31 @@
+Return-Path: <stephane@eptica.com>
+Delivered-To: dwarf-test-extern@demis27.net
+Received: from spool.mail.gandi.net (mspool1-v.mgt.gandi.net [10.0.21.71])
+	by mboxes1-d.mgt.gandi.net (Postfix) with ESMTP id 62C3442B7
+	for <dwarf-test-extern@demis27.net>; Thu,  4 Jun 2009 18:33:42 +0200 (CEST)
+Received: from localhost (mfilter5-d.gandi.net [217.70.178.39])
+	by spool.mail.gandi.net (Postfix) with ESMTP id 2D70D6A84CB
+	for <dwarf-test-extern@demis27.net>; Thu,  4 Jun 2009 18:33:42 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at mfilter5-v.mgt.gandi.net
+Received: from spool.mail.gandi.net ([10.0.21.71])
+	by localhost (mfilter5-d.gandi.net [217.70.178.39]) (amavisd-new, port 10024)
+	with ESMTP id o-smkiYFdY7g for <dwarf-test-extern@demis27.net>;
+	Thu,  4 Jun 2009 18:33:39 +0200 (CEST)
+Received: from musset.eptica.com (eptica2.pck.nerim.net [213.41.185.87])
+	by spool.mail.gandi.net (Postfix) with ESMTP id 7C2106A84F6
+	for <dwarf-test-extern@demis27.net>; Thu,  4 Jun 2009 18:26:34 +0200 (CEST)
+Received: from [10.1.0.212] (ellis.lan.eptica.com [10.1.0.212])
+	by musset.eptica.com (Postfix) with ESMTP id 94BE47CF5
+	for <dwarf-test-extern@demis27.net>; Thu,  4 Jun 2009 17:31:41 +0200 (CEST)
+Message-ID: <4A27E8CC.9020509@eptica.com>
+Date: Thu, 04 Jun 2009 17:31:24 +0200
+From: stephane kermabon <stephane@eptica.com>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090318)
+MIME-Version: 1.0
+To: dwarf-test-extern@demis27.net
+Subject: test thunderbird sans accent - html
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+c'est du html
+

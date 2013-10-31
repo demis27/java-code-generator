@@ -1,0 +1,100 @@
+Return-Path: <pbanwarth@rayonnance.fr>
+Delivered-To: dwarf-test-extern@demis27.net
+Received: from spool.mail.gandi.net (mspool2-v.mgt.gandi.net [10.0.21.72])
+	by mboxes1-d.mgt.gandi.net (Postfix) with ESMTP id 9FD2542E0
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:15:51 +0200 (CEST)
+Received: from localhost (mfilter1-d.gandi.net [217.70.178.41])
+	by spool.mail.gandi.net (Postfix) with ESMTP id 8705132C071
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:15:51 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at mfilter1-d.mgt.gandi.net
+Received: from spool.mail.gandi.net ([10.0.21.72])
+	by localhost (mfilter1-d.mgt.gandi.net [217.70.178.41]) (amavisd-new, port 10024)
+	with ESMTP id BUIH2Dx0EW-A for <dwarf-test-extern@demis27.net>;
+	Fri,  5 Jun 2009 16:15:49 +0200 (CEST)
+X-WhiteListed: mail was accepted with no delay
+X-WhiteListed: mail was accepted with no delay
+Received: from smtp2-g21.free.fr (smtp2-g21.free.fr [212.27.42.2])
+	by spool.mail.gandi.net (Postfix) with ESMTP id 9E5B832C080
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:15:46 +0200 (CEST)
+Received: from smtp2-g21.free.fr (localhost [127.0.0.1])
+	by smtp2-g21.free.fr (Postfix) with ESMTP id 639274B01C4
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:15:43 +0200 (CEST)
+Received: from rayonnance.fr (bea75-1-82-234-124-142.fbx.proxad.net [82.234.124.142])
+	by smtp2-g21.free.fr (Postfix) with ESMTP id 778794B0126
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:15:41 +0200 (CEST)
+X-MimeOLE: Produced By Microsoft Exchange V6.5
+Content-class: urn:content-classes:message
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----_=_NextPart_001_01C9E5E8.1B74517F"
+Subject: Du texte enrichi
+Date: Fri, 5 Jun 2009 16:15:40 +0200
+Message-ID: <6290ACD55BA86E4B8087EE01241D0F265620BE@srv-mail.Rayonnance>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Thread-Topic: Du texte enrichi
+Thread-Index: Acnl6Bs0PKNy08+xRRuaYBm5Rg2srQ==
+From: "Philippe Banwarth" <pbanwarth@rayonnance.fr>
+To: <dwarf-test-extern@demis27.net>
+
+This is a multi-part message in MIME format.
+
+------_=_NextPart_001_01C9E5E8.1B74517F
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+Tu me confirmes l'ajout de la v=E9rification de la config =
+(enregistrement 'IDOCKIT' non pr=E9sent dans les connection settings) =
+avant l'envoi des nouveaux PDAs ?
+(voir e-mail joint contenant le compte-rendu envoy=E9 hier au directeur =
+de la BU All.)
+
+
+
+
+------_=_NextPart_001_01C9E5E8.1B74517F
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+<META NAME=3D"Generator" CONTENT=3D"MS Exchange Server version =
+6.5.7654.12">
+<TITLE>Du texte enrichi</TITLE>
+</HEAD>
+<BODY>
+<!-- Converted from text/rtf format -->
+<BR>
+<BR>
+
+<P><SPAN LANG=3D"fr"><FONT COLOR=3D"#FF0000" SIZE=3D2 =
+FACE=3D"Verdana">Tu me confirmes l&#8217;ajout</FONT> <FONT =
+COLOR=3D"#000080" SIZE=3D2 FACE=3D"Verdana">de la<B> v=E9rification de =
+la</B></FONT><B> <FONT COLOR=3D"#000080" SIZE=3D4 =
+FACE=3D"Verdana">config (enregistrement &#8216;IDOCKIT</FONT></B><FONT =
+COLOR=3D"#000080" SIZE=3D4 FACE=3D"Verdana">&#8217; non</FONT> <FONT =
+COLOR=3D"#FF00FF" SIZE=3D4 FACE=3D"Verdana">pr=E9sent dans</FONT> <FONT =
+COLOR=3D"#FF00FF" SIZE=3D2 FACE=3D"Verdana">les connection</FONT> <FONT =
+COLOR=3D"#000080" SIZE=3D2 FACE=3D"Verdana">settings) avant =
+l&#8217;envoi des nouveaux PDAs ?</FONT></SPAN></P>
+
+<P><SPAN LANG=3D"fr"><I><FONT COLOR=3D"#000080" SIZE=3D2 =
+FACE=3D"Verdana">(voir e-mail joint</FONT> <FONT COLOR=3D"#00FF00" =
+SIZE=3D2 FACE=3D"Verdana">contenant</FONT></I> <FONT COLOR=3D"#00FF00" =
+SIZE=3D2 FACE=3D"Verdana">le compte-rendu</FONT> <FONT COLOR=3D"#000080" =
+SIZE=3D2 FACE=3D"Verdana">envoy=E9 hier au directeur de la BU =
+All.)</FONT></SPAN>
+</P>
+<BR>
+<BR>
+
+</BODY>
+</HTML>
+------_=_NextPart_001_01C9E5E8.1B74517F--

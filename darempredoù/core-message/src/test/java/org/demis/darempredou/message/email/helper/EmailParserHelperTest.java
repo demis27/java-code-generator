@@ -50,8 +50,8 @@ public class EmailParserHelperTest {
         EmailParserHelper.readHeaderLine(headers, "    for <dwarf-test-extern@demis27.net>; Thu,  7 May 2009 12:50:34 +0200 (CEST)");
         Assert.assertEquals(headers.size(), 2);
         Assert.assertEquals(headers.get(1).getName(), "Received");
-        Assert.assertEquals(headers.get(1).getBinaryValue(), "from spool.mail.gandi.net (mspool2-v.mgt.gandi.net [10.0.21.72]) "
-                + "by mboxes1-d.mgt.gandi.net (Postfix) with ESMTP id 4A7074270 "
+        Assert.assertEquals(headers.get(1).getBinaryValue(), "from spool.mail.gandi.net (mspool2-v.mgt.gandi.net [10.0.21.72])"
+                + "by mboxes1-d.mgt.gandi.net (Postfix) with ESMTP id 4A7074270"
                 + "for <dwarf-test-extern@demis27.net>; Thu,  7 May 2009 12:50:34 +0200 (CEST)");
     }
 

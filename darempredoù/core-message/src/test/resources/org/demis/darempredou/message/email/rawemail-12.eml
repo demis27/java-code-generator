@@ -1,0 +1,104 @@
+Return-Path: <pbanwarth@rayonnance.fr>
+Delivered-To: dwarf-test-extern@demis27.net
+Received: from spool.mail.gandi.net (mspool2-v.mgt.gandi.net [10.0.21.72])
+	by mboxes1-d.mgt.gandi.net (Postfix) with ESMTP id 9F68C42DB
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:15:05 +0200 (CEST)
+Received: from localhost (mfilter2-v.gandi.net [217.70.178.36])
+	by spool.mail.gandi.net (Postfix) with ESMTP id 8B2B232C06B
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:15:04 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at mfilter2-v.mgt.gandi.net
+Received: from spool.mail.gandi.net ([10.0.21.72])
+	by localhost (mfilter2-v.gandi.net [217.70.178.36]) (amavisd-new, port 10024)
+	with ESMTP id NxpuAVQlrAV8 for <dwarf-test-extern@demis27.net>;
+	Fri,  5 Jun 2009 16:15:03 +0200 (CEST)
+X-WhiteListed: mail was accepted with no delay
+X-WhiteListed: mail was accepted with no delay
+Received: from smtp4-g21.free.fr (smtp4-g21.free.fr [212.27.42.4])
+	by spool.mail.gandi.net (Postfix) with ESMTP id 30E8332C066
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:14:51 +0200 (CEST)
+Received: from smtp4-g21.free.fr (localhost [127.0.0.1])
+	by smtp4-g21.free.fr (Postfix) with ESMTP id 3D59D4C80BD
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:14:49 +0200 (CEST)
+Received: from rayonnance.fr (bea75-1-82-234-124-142.fbx.proxad.net [82.234.124.142])
+	by smtp4-g21.free.fr (Postfix) with ESMTP id 50AB84C80CC
+	for <dwarf-test-extern@demis27.net>; Fri,  5 Jun 2009 16:14:47 +0200 (CEST)
+X-MimeOLE: Produced By Microsoft Exchange V6.5
+Content-class: urn:content-classes:message
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----_=_NextPart_001_01C9E5E7.D758C485"
+Subject: Issue 0001886
+Date: Fri, 5 Jun 2009 16:13:46 +0200
+Message-ID: <6290ACD55BA86E4B8087EE01241D0F265620BD@srv-mail.Rayonnance>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Thread-Topic: Issue 0001886
+Thread-Index: Acnl59cf/5XYIdEuTRebbXbrKcYeJw==
+From: "Philippe Banwarth" <pbanwarth@rayonnance.fr>
+To: <dwarf-test-extern@demis27.net>
+
+This is a multi-part message in MIME format.
+
+------_=_NextPart_001_01C9E5E7.D758C485
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Aujourd'hui 22/05/2009, aucun OT dans mon planning PDA, malgr=E9 qu'un =
+OT existe sur Moms Web pour le 25/05/09. Voir fichier ci-joint.
+=20
+=20
+Correction du serveur dans la configuration donne des OT.
+Mais le regroupement n'est pas correct au niveau de la date de d=E9but =
+(pb web service)=20
+=20
+22-05-09 14:43 	dchavet 	New Issue =09
+=20
+Assigned To 	 =3D> jsananes 	=20
+=20
+=20
+=20
+
+------_=_NextPart_001_01C9E5E7.D758C485
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.6000.16825" name=3DGENERATOR></HEAD>
+<BODY>
+<DIV><!-- Converted from text/plain format --><FONT =
+color=3D#0000ff>Aujourd'hui=20
+22/05/2009, aucun OT dans mon planning PDA, malgr=E9 qu'un OT existe sur =
+Moms Web=20
+pour le 25/05/09. Voir fichier ci-joint.</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DStencil color=3D#00ff00 size=3D6>Correction du serveur =
+dans la=20
+configuration donne des OT.<BR></FONT><STRONG><FONT face=3DTahoma =
+size=3D1><FONT=20
+size=3D3>Mais le regroupement n'est<FONT color=3D#00ffff> pas=20
+correct</FONT></FONT><FONT color=3D#00ffff> au niveau</FONT> de la date =
+de d=E9but=20
+(pb web service)&nbsp;</FONT></STRONG></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><TD class=3Dsmall-caption><FONT face=3D"Vladimir Script">22-05-09 =
+14:43=20
+</TD><TD class=3Dsmall-caption>dchavet </TD><TD =
+class=3Dsmall-caption>New=20
+Issue</FONT> </TD></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><TD class=3Dsmall-caption><FONT color=3D#ff00ff>Assigned =
+<STRONG>To</STRONG>=20
+</TD><TD class=3Dsmall-caption>&nbsp;=3D&gt; jsananes&nbsp;</TD><FONT =
+face=3DArial=20
+size=3D2>&nbsp;</FONT></FONT></DIV>
+<DIV><FONT face=3DArial color=3D#ff00ff size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV></BODY></HTML>
+
+------_=_NextPart_001_01C9E5E7.D758C485--

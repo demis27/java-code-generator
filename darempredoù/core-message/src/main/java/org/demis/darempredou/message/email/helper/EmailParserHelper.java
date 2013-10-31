@@ -93,7 +93,7 @@ public class EmailParserHelper {
 
     public static void readHeaderLine(List<EmailHeader> headers, String line) {
         if (line.charAt(0) == ' ' || line.charAt(0) == '\t') {
-            headers.get(headers.size() - 1).Binary(" " + line.trim().replace("\t", ""));
+            headers.get(headers.size() - 1).Binary(line.trim().replace("\t", ""));
         }
         else {
             String headerName = line.substring(0, line.indexOf(":")) ;
